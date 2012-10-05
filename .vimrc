@@ -166,5 +166,35 @@ if has('mac')
     else
         let Grep_Find_Use_Xargs = 0
     endif
+
+" windows.
+elseif has('win32')
+    " ref.vimの設定
+    nmap ,ra :Ref alc<Space>
+    " nmap ,ra :<C-u>Ref alc<Space>
+    let $PATH = $PATH . ';C:\Program Files\Lynx for Win32'
+    let g:ref_alc_use_cache = 1
+    let g:ref_alc_start_linenumber = 33
+    let g:ref_alc_encoding = 'Shift-JIS'
+    " filetypeが分からんならalc
+    call ref#register_detection('_', 'alc')
+
+    " Cygwinのgrepを使う場合の設定.
+    set grepprg=c:/cygwin1.7/bin/grep\ -nH
+    let $CYGWIN='nodosfilewarning'
+
+
+    " grep.vimの設定.
+    let Grep_Path = 'C:\GnuWin32\bin\grep.exe'
+    let Fgrep_Path = 'C:\GnuWin32\bin\grep.exe -F'
+    let Egrep_Path = 'C:\GnuWin32\bin\grep.exe -E'
+    let Grep_Find_Path = 'C:\GnuWin32\bin\find.exe'
+    let Grep_Xargs_Path = 'C:\GnuWin32\bin\xargs.exe'
+    let Grep_Shell_Quote_Char = '"'
+    let Grep_Skip_Dirs = '.svn'
+
+    " 改行コードの設定.
+    set fileformat=unix
+
 endif
 
