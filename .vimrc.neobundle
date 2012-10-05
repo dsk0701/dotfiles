@@ -1,0 +1,27 @@
+" ================== vundle設定 ==================
+set nocompatible
+filetype off
+
+if has('vim_starting')
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+NeoBundle 'https://github.com/Shougo/neobundle.vim.git'
+NeoBundle 'https://github.com/Shougo/unite.vim.git'
+NeoBundle 'https://github.com/Shougo/vimfiler.git'
+NeoBundle 'https://github.com/Shougo/vimproc.git'
+NeoBundle 'https://github.com/Shougo/neocomplcache.git'
+NeoBundle 'https://github.com/Sixeight/unite-grep.git'
+NeoBundle 'https://github.com/houtsnip/vim-emacscommandline.git'
+NeoBundle 'https://github.com/msanders/cocoa.vim.git'
+NeoBundle 'https://github.com/msanders/snipmate.vim.git'
+NeoBundle 'https://github.com/tomasr/molokai.git'
+
+NeoBundle 'https://github.com/vim-scripts/grep.vim.git'
+NeoBundle 'https://github.com/vim-scripts/matrix.vim.git'
+
+filetype plugin indent on
+
+

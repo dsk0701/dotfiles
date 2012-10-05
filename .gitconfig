@@ -1,0 +1,7 @@
+[color]
+	ui = auto
+[user]
+	name = dsk
+	email = d.dubandtribal@gmail.com
+[core]
+	excludesfile = /Users/dsk/.gitignore

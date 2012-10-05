@@ -1,0 +1,27 @@
+" 色を付ける.
+syntax on
+
+" ファイルタイププラグインとインデントを有効(for python)
+filetype plugin indent on
+
+" 行番号表示.
+set number
+
+" 検索時に大文字小文字を無視.
+set ignorecase
+
+" タブ幅.
+set tabstop=4
+
+" シフト（>）幅.
+set shiftwidth=4
+
+" タブを半角スペースで入力.
+set et
+
+" 検索時のハイライト.
+set hlsearch
+
+" 検索時のハイライトをESCキー連打で解除.
+nnoremap <Esc><Esc> :noh<Enter>
+

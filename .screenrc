@@ -1,0 +1,16 @@
+# Bind a command key to Ctrl-k.
+escape ^k^k
+
+# Display hardstatus under the screen.
+hardstatus alwayslastline "%-w%{= mw}%n %t%{-}%+w"
+
+# Scroll buffer size.
+defscrollback 10000
+
+# Detach the screen when terminal is down suddenly.
+autodetach on
+
+# Disable startup message.
+startup_message off
+
+

@@ -1,0 +1,10 @@
+# git ssl settings.
+export GIT_SSL_NO_VERIFY=true
+
+# home/bin.
+export PATH=~/bin:$PATH
+
+# android sdk.
+# export PATH=~/ext/ae/android-sdk-linux_x86/tools:$PATH
+export PATH=~/bin/android-sdk-macosx/tools:~/bin/android-sdk-macosx/platform-tools:$PATH
+
