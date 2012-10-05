@@ -1,0 +1,9 @@
+*.swp
+doc/tags
+doc/tags-ja
+.vim/.netrwhist
+.vim/bundle/.neobundle
+.vim/eclim
+.vim/plugin
+.vim/plugin
+
