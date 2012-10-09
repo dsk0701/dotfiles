@@ -14,6 +14,7 @@ cd $(dirname $0)
 ErrorCheck git submodule init
 ErrorCheck git submodule update
 
+ErrorCheck patch -d .vim/bundle/cocoa.vim -p1 < cocoa.vim.objcpp.patch
 
 # submodule_dirs=`git submodule | awk '{print $2}'`
 # 

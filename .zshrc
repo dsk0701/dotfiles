@@ -213,6 +213,7 @@ preexec () {
 # timeの表示をbashっぽくする
 export TIMEFMT=$'%J : \n real\t%*Es\n user\t%*Us\n sys \t%*Ss\n cpu \t%P'
 
+export GIT_EDITOR="vim"
 export SVN_EDITOR="vim"
 export PATH=$HOME/bin:$PATH
 export RUBYOPT="$RUBYOPT -Ku"
