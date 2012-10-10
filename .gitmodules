@@ -34,3 +34,12 @@
 [submodule ".vim/bundle/matrix.vim"]
 	path = .vim/bundle/matrix.vim
 	url = https://github.com/vim-scripts/matrix.vim.git
+[submodule ".vim/bundle/sudo.vim"]
+	path = .vim/bundle/sudo.vim
+	url = https://github.com/vim-scripts/sudo.vim.git
+[submodule ".vim/bundle/vim-markdown"]
+	path = .vim/bundle/vim-markdown
+	url = https://github.com/hallison/vim-markdown.git
+[submodule ".vim/bundle/vim-quickrun"]
+	path = .vim/bundle/vim-quickrun
+	url = https://github.com/thinca/vim-quickrun.git
