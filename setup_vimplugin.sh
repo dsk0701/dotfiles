@@ -22,7 +22,8 @@ ErrorCheck patch -d .vim/bundle/cocoa.vim -p1 < cocoa.vim.objcpp.patch
 # -------------------------
 # pydiction
 # -------------------------
-pydiction_dir=~/.vim/bundle/Pydiction
+pydiction_dir=~/.vim/bundle/pydiction
+pydiction_after_dir=~/.vim/after/ftplugin
 django_modules="
     pydiction.py
     django
@@ -41,6 +42,8 @@ django_modules="
 which django-admin
 if [ $? -eq 0 ]; then
     ErrorCheck mkdir -p temp
+    ErrorCheck mkdir -p ${pydiction_after_dir}
+    cp ${pydiction_dir}/* ${pydiction_after_dir}/.
 
     pushd temp
     django-admin startproject django_compl
@@ -50,7 +53,8 @@ if [ $? -eq 0 ]; then
     sed -i -e "2a\import settings\nfrom django.core.management import setup_environ\nsetup_environ(settings)" \
         pydiction.py
     python ${django_modules}
-    cp complete-dict ${pydiction_dir}/.
+
+    cp complete-dict ${pydiction_after_dir}/.
 
     popd
     popd
