@@ -147,6 +147,15 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 
+" --------------------------------------------------
+" pydiction
+" --------------------------------------------------
+" filetype plugin on
+au FileType python let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict'
+" au FileType python setl autoindent
+" au FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+" au FileType python setl expandtab tabstop=4 shiftwidth=4 softtabstop=4
+
 " mac.
 if has('mac')
     " 透過させる.

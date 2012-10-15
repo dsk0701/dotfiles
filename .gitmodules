@@ -43,3 +43,6 @@
 [submodule ".vim/bundle/vim-quickrun"]
 	path = .vim/bundle/vim-quickrun
 	url = https://github.com/thinca/vim-quickrun.git
+[submodule ".vim/bundle/Pydiction"]
+	path = .vim/bundle/Pydiction
+	url = https://github.com/vim-scripts/Pydiction.git
