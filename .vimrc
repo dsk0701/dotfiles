@@ -167,7 +167,9 @@ if has('mac')
 
     " 勝手に改行しない.
     set formatoptions=q
-    set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/tags
+
+    " tag ファイル設定.
+    set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/tags
 
     " for grep.vim.
     if system('which gxargs')
