@@ -6,5 +6,11 @@ export PATH=~/bin:$PATH
 
 # android sdk.
 # export PATH=~/ext/ae/android-sdk-linux_x86/tools:$PATH
-export PATH=~/bin/android-sdk-macosx/tools:~/bin/android-sdk-macosx/platform-tools:$PATH
+export PATH=~/bin/adt-bundle-mac-x86_64-20130219/sdk/tools:~/bin/adt-bundle-mac-x86_64-20130219/sdk/platform-tools:$PATH
+
+# ADT eclipse.
+export ADT_ECLIPSE_HOME=~/bin/adt-bundle-mac-x86_64-20130219/eclipse
+
+# Pure eclipse.
+export ECLIPSE_HOME=/Applications/eclipse
 

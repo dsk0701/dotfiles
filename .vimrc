@@ -56,6 +56,10 @@ set clipboard+=unnamed
 " ツールバーを非表示.
 set guioptions-=T
 
+" ステータスラインに文字コードと改行文字の種別を表示.
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+
+
 " 行末の空白文字、行頭のTAB文字、全角スペースをハイライト.
 " master setting.
 " highlight WhitespaceEOL term=underline ctermbg=DarkMagenta guibg=DarkMagenta
@@ -169,7 +173,10 @@ if has('mac')
     set formatoptions=q
 
     " tag ファイル設定.
-    set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/tags
+    set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/tags
+    set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/tags
+
+    set tags+=~/var/dev/ref/ae/src/android-2.3.1_r1/frameworks/tags
 
     " for grep.vim.
     if system('which gxargs')

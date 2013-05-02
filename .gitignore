@@ -1,6 +1,5 @@
 *.swp
-doc/tags
-doc/tags-ja
+tags
 .vim/.netrwhist
 .vim/bundle/.neobundle
 .vim/eclim

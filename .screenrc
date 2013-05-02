@@ -5,7 +5,7 @@ escape ^k^k
 hardstatus alwayslastline "%-w%{= mw}%n %t%{-}%+w"
 
 # Scroll buffer size.
-defscrollback 10000
+defscrollback 100000
 
 # Detach the screen when terminal is down suddenly.
 autodetach on
