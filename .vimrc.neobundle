@@ -16,7 +16,7 @@ NeoBundle 'https://github.com/Shougo/neocomplcache.git'
 NeoBundle 'https://github.com/Sixeight/unite-grep.git'
 NeoBundle 'https://github.com/houtsnip/vim-emacscommandline.git'
 NeoBundle 'https://github.com/msanders/cocoa.vim.git'
-NeoBundle 'https://github.com/msanders/snipmate.vim.git'
+" NeoBundle 'https://github.com/msanders/snipmate.vim.git'
 NeoBundle 'https://github.com/tomasr/molokai.git'
 NeoBundle 'https://github.com/hallison/vim-markdown.git'
 NeoBundle 'https://github.com/thinca/vim-quickrun.git'
@@ -24,6 +24,7 @@ NeoBundle 'https://github.com/rkulla/pydiction.git'
 NeoBundle 'https://github.com/vim-scripts/grep.vim.git'
 NeoBundle 'https://github.com/vim-scripts/matrix.vim.git'
 NeoBundle 'https://github.com/vim-scripts/sudo.vim.git'
+NeoBundle 'https://github.com/rking/ag.vim.git'
 
 filetype plugin indent on
 
