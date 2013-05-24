@@ -8,6 +8,9 @@ export PATH=~/bin:$PATH
 # export PATH=~/ext/ae/android-sdk-linux_x86/tools:$PATH
 export PATH=~/bin/adt-bundle-mac-x86_64-20130219/sdk/tools:~/bin/adt-bundle-mac-x86_64-20130219/sdk/platform-tools:$PATH
 
+# android ndk.
+export PATH=~/bin/android-ndk-r8e:$PATH
+
 # ADT eclipse.
 export ADT_ECLIPSE_HOME=~/bin/adt-bundle-mac-x86_64-20130219/eclipse
 
