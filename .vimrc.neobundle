@@ -33,6 +33,11 @@ NeoBundle 'https://github.com/vim-scripts/grep.vim.git'
 NeoBundle 'https://github.com/vim-scripts/matrix.vim.git'
 NeoBundle 'https://github.com/vim-scripts/sudo.vim.git'
 NeoBundle 'https://github.com/rking/ag.vim.git'
+NeoBundle 'https://github.com/yuratomo/java-api-complete.git'
+NeoBundle 'https://github.com/yuratomo/java-api-android.git'
+NeoBundle 'https://github.com/vim-scripts/javacomplete.git'
+NeoBundle 'https://github.com/anddam/android-javacomplete.git'
+
 
 filetype plugin indent on
 
