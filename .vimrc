@@ -56,6 +56,10 @@ set clipboard+=unnamed
 " ツールバーを非表示.
 set guioptions-=T
 
+" 検索後画面の中心に.
+" nmap n nzz
+" nmap N Nzz
+
 " ステータスラインに文字コードと改行文字の種別を表示.
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
@@ -90,6 +94,13 @@ vnoremap <expr> h col('.') == 1 && foldlevel(line('.')) > 0 ? 'zcgv' : 'h'
 " 折畳上で l を押すと選択範囲に含まれる折畳を開く。
 vnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv0' : 'l'
 
+" ciy でカーソル位置の単語をヤンクした文字列で置換する.
+nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+nnoremap <silent> cy   ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+vnoremap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+
+" 検索時の '/' を自動でエスケープする.
+cnoremap <expr> /  getcmdtype() == '/' ? '\/' : '/'
 
 " --------------------------------------------------
 " vimfiler
@@ -99,10 +110,19 @@ let g:vimfiler_as_default_explorer = 1
 " --------------------------------------------------
 " unite-grep
 " --------------------------------------------------
-nnoremap <silent> gr :Unite grep::-HRn -no-quit<CR>
-nnoremap <silent> gri :Unite grep::-iHRn -no-quit<CR>
-nnoremap <silent> grw :Unite grep::-wHRn -no-quit<CR>
+" grep のバックエンドを ag にする.
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_grep_max_candidates = 200
 
+" key-mappings.
+" nnoremap <silent> gr :Unite grep::-Hn -no-quit<CR>
+" nnoremap <silent> gri :Unite grep::-iHn -no-quit<CR>
+" nnoremap <silent> grw :Unite grep::-wHn -no-quit<CR>
+
+nnoremap <silent> gr :Unite grep<CR>
+nnoremap <silent> grw :Unite grep:.:-w -no-quit<CR>
 
 " --------------------------------------------------
 " unite
@@ -212,7 +232,30 @@ autocmd FileType c          setlocal omnifunc=ccomplete#Complete
 autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
 
 " java-api-complete を使ってみる
-" autocmd FileType java       setlocal omnifunc=javaapi#complete
+autocmd FileType java       setlocal omnifunc=javaapi#complete
+
+" javacomplete を使ってみる
+" autocmd FileType java       setlocal omnifunc=javacomplete#Complete
+
+" setting for using clang_complete with neocomplcache.
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_force_omni_patterns.c =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.cpp =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplcache_force_omni_patterns.objc =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.objcpp =
+  \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" clang_complete の自動呼び出しは切っておく.
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+
+" Should be written in after/ftplugin/objc.vim ?
+" let g:clang_auto_user_options = 'path, .clang_complete, ios'
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
