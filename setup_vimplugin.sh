@@ -20,6 +20,12 @@ ErrorCheck git submodule update
 ErrorCheck patch -d .vim/bundle/cocoa.vim -p1 < cocoa.vim.objcpp.patch
 
 # -------------------------
+# neobundle
+# -------------------------
+mkdir -p ~/.vim/bundle
+ErrorCheck git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+
+# -------------------------
 # pydiction
 # -------------------------
 pydiction_dir=~/.vim/bundle/pydiction
