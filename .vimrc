@@ -121,8 +121,8 @@ let g:unite_source_grep_max_candidates = 200
 " nnoremap <silent> gri :Unite grep::-iHn -no-quit<CR>
 " nnoremap <silent> grw :Unite grep::-wHn -no-quit<CR>
 
-nnoremap <silent> gr :Unite grep<CR>
-nnoremap <silent> grw :Unite grep:.:-w -no-quit<CR>
+nnoremap <silent> gr :Unite grep -auto-preview<CR>
+nnoremap <silent> grw :Unite grep:.:-w -no-quit -auto-preview<CR>
 
 " --------------------------------------------------
 " unite
