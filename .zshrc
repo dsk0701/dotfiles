@@ -218,9 +218,16 @@ export SVN_EDITOR="vim"
 export PATH=$HOME/bin:$PATH
 export RUBYOPT="$RUBYOPT -Ku"
 
+# ant file encoding.
+export ANT_OPTS=-Dfile.encoding=UTF8
+
 # 重複したPATHを削除
 typeset -U path
 
+# --------------------------------------------------------------------------------
+# alias
+# --------------------------------------------------------------------------------
+#
 # colors for ls.
 alias d="ls --color"
 alias ls="ls --color=auto -F"
@@ -236,6 +243,10 @@ alias nvim="vim --cmd \"silent noautocmd e\""
 # unixtime to localtime
 alias -g TIME="| awk '{print strftime(\"%Y-%m-%d %H:%M:%S\",\$1)}'"
 alias -g UTIME="| awk '{print strftime(\"%Y-%m-%d %H:%M:%S %Z\",\$1,1)}'"  # UTC (from awk 3.1.6)
+
+# java relationship.
+alias javac='javac -J-Dfile.encoding=UTF-8'
+alias java='java -Dfile.encoding=UTF-8'
 
 # mac
 case "${OSTYPE}" in

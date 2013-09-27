@@ -1,5 +1,4 @@
 " テーマ.
-" colorscheme koehler
 colorscheme molokai
 
 " ウィンドウサイズ設定.

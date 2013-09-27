@@ -95,9 +95,13 @@ vnoremap <expr> h col('.') == 1 && foldlevel(line('.')) > 0 ? 'zcgv' : 'h'
 vnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv0' : 'l'
 
 " ciy でカーソル位置の単語をヤンクした文字列で置換する.
-nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
-nnoremap <silent> cy   ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
-vnoremap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+" nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+" nnoremap <silent> cy   ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+" vnoremap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+
+nnoremap <silent> ciy ciw<C-r>0<ESC>
+nnoremap <silent> cy   ce<C-r>0<ESC>
+vnoremap <silent> cy   c<C-r>0<ESC>
 
 " 検索時の '/' を自動でエスケープする.
 cnoremap <expr> /  getcmdtype() == '/' ? '\/' : '/'
@@ -232,7 +236,7 @@ autocmd FileType c          setlocal omnifunc=ccomplete#Complete
 autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
 
 " java-api-complete を使ってみる
-autocmd FileType java       setlocal omnifunc=javaapi#complete
+" autocmd FileType java       setlocal omnifunc=javaapi#complete
 
 " javacomplete を使ってみる
 " autocmd FileType java       setlocal omnifunc=javacomplete#Complete
