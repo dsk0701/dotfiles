@@ -115,18 +115,18 @@ let g:vimfiler_as_default_explorer = 1
 " unite-grep
 " --------------------------------------------------
 " grep のバックエンドを ag にする.
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nocolor --nogroup'
-let g:unite_source_grep_recursive_opt = ''
-let g:unite_source_grep_max_candidates = 200
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_max_candidates = 200
+endif
 
 " key-mappings.
-" nnoremap <silent> gr :Unite grep::-Hn -no-quit<CR>
-" nnoremap <silent> gri :Unite grep::-iHn -no-quit<CR>
-" nnoremap <silent> grw :Unite grep::-wHn -no-quit<CR>
-
-nnoremap <silent> gr :Unite grep -auto-preview<CR>
-nnoremap <silent> grw :Unite grep:.:-w -no-quit -auto-preview<CR>
+nnoremap <silent> ,ug :Unite grep::-n:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+nnoremap <silent> ,ugi :Unite grep::-in:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+nnoremap <silent> ,ugw :Unite grep::-wn:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+nnoremap <silent> ,uga :Unite grep::-n:<C-R><C-W> -auto-preview -buffer-name=grep-buffer -no-quit<CR>
 
 " --------------------------------------------------
 " unite
@@ -153,6 +153,8 @@ au FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
   " Overwrite settings.
 endfunction
+" 前回のバッファを開く
+nnoremap <silent> ,ur :UniteResume<CR>
 
 " --------------------------------------------------
 " neocomplcache

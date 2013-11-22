@@ -21,7 +21,7 @@ NeoBundle 'https://github.com/Shougo/vimproc.git', {
             \    },
             \ }
 NeoBundle 'https://github.com/Shougo/neocomplcache.git'
-NeoBundle 'https://github.com/Sixeight/unite-grep.git'
+" NeoBundle 'https://github.com/Sixeight/unite-grep.git'
 NeoBundle 'https://github.com/houtsnip/vim-emacscommandline.git'
 NeoBundle 'https://github.com/msanders/cocoa.vim.git'
 NeoBundle 'https://github.com/tokorom/clang_complete.git'
