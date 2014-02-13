@@ -329,6 +329,12 @@ if has('mac')
         let Grep_Find_Use_Xargs = 0
     endif
 
+    " libclang の パス設定
+    let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+    if isdirectory(s:clang_library_path)
+        let g:clang_library_path=s:clang_library_path
+    endif
+
 " windows.
 elseif has('win32')
     " ref.vimの設定

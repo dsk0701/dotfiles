@@ -3,7 +3,7 @@ colorscheme molokai
 
 " ウィンドウサイズ設定.
 set lines=100
-set columns=200
+set columns=150
 
 "フォント設定.
 " mac.
