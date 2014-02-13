@@ -43,6 +43,7 @@ NeoBundle 'https://github.com/yuratomo/java-api-android.git'
 "             \ },
 "             \ }
 " NeoBundle 'https://github.com/anddam/android-javacomplete.git'
+NeoBundle 'https://github.com/bling/vim-airline.git'
 
 
 filetype plugin indent on

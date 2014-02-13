@@ -5,8 +5,7 @@ export GIT_SSL_NO_VERIFY=true
 export PATH=~/bin:$PATH
 
 # android sdk.
-# export PATH=~/ext/ae/android-sdk-linux_x86/tools:$PATH
-export PATH=~/bin/adt-bundle-mac-x86_64-20130219/sdk/tools:~/bin/adt-bundle-mac-x86_64-20130219/sdk/platform-tools:$PATH
+export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools:$PATH
 
 # android ndk.
 export PATH=~/bin/android-ndk-r8e:$PATH
