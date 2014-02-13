@@ -5,3 +5,8 @@ tags
 .vim/eclim
 .vim/plugin
 
+**/*.xcodeproj/*
+!**/*.xcodeproj/project.pbxproj
+!**/*.xcodeproj/xcshareddata
+.DS_Store
+
