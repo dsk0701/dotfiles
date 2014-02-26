@@ -4,9 +4,13 @@ tags
 .vim/bundle
 .vim/eclim
 .vim/plugin
+.DS_Store
 
+# Xcode
 **/*.xcodeproj/*
 !**/*.xcodeproj/project.pbxproj
 !**/*.xcodeproj/xcshareddata
-.DS_Store
+**/*.xcworkspace/*
+!**/*.xcworkspace/xcshareddata
+
 
