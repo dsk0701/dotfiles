@@ -10,7 +10,6 @@ tags
 **/*.xcodeproj/*
 !**/*.xcodeproj/project.pbxproj
 !**/*.xcodeproj/xcshareddata
-**/*.xcworkspace/*
-!**/*.xcworkspace/xcshareddata
+**/*.xcworkspace/xcuserdata/
 
 
