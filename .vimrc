@@ -260,8 +260,6 @@ let g:neocomplcache_force_omni_patterns.objcpp =
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 0
 
-" Should be written in after/ftplugin/objc.vim ?
-" let g:clang_auto_user_options = 'path, .clang_complete, ios'
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
@@ -329,8 +327,11 @@ if has('mac')
         let Grep_Find_Use_Xargs = 0
     endif
 
+    " clang_complete setting for objective-c
+    let g:clang_complete_getopts_ios_sdk_directory = '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk'
+
     " libclang の パス設定
-    let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+    let s:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
     if isdirectory(s:clang_library_path)
         let g:clang_library_path=s:clang_library_path
     endif
