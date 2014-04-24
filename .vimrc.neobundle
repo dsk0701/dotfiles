@@ -8,10 +8,13 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
-NeoBundle 'https://github.com/Shougo/neobundle.vim.git'
-NeoBundle 'https://github.com/Shougo/unite.vim.git'
-NeoBundle 'https://github.com/Shougo/vimfiler.git'
-NeoBundle 'https://github.com/Shougo/vimproc.git', {
+let g:neobundle#types#git#default_protocol = 'git'
+
+NeoBundle 'Shougo/neobundle'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/vimfiler.git'
+NeoBundle 'Shougo/vimproc.git', {
             \ 'build' : {
             \     'windows' : 'make -f make_mingw32.mak',
             \     'cygwin' : 'make -f make_cygwin.mak',
@@ -19,31 +22,32 @@ NeoBundle 'https://github.com/Shougo/vimproc.git', {
             \     'unix' : 'make -f make_unix.mak',
             \    },
             \ }
-NeoBundle 'https://github.com/Shougo/neocomplcache.git'
-NeoBundle 'https://github.com/Shougo/neosnippet.vim.git'
-NeoBundle 'https://github.com/houtsnip/vim-emacscommandline.git'
-NeoBundle 'https://github.com/msanders/cocoa.vim.git'
-NeoBundle 'https://github.com/tokorom/clang_complete.git'
-NeoBundle 'https://github.com/tokorom/clang_complete-getopts-ios.git'
-NeoBundle 'https://github.com/tomasr/molokai.git'
-NeoBundle 'https://github.com/hallison/vim-markdown.git'
-NeoBundle 'https://github.com/thinca/vim-quickrun.git'
-NeoBundle 'https://github.com/rkulla/pydiction.git'
-NeoBundle 'https://github.com/vim-scripts/grep.vim.git'
-NeoBundle 'https://github.com/vim-scripts/matrix.vim--Yang.git'
-NeoBundle 'https://github.com/vim-scripts/sudo.vim.git'
-NeoBundle 'https://github.com/vim-scripts/taglist.vim.git'
-NeoBundle 'https://github.com/rking/ag.vim.git'
-NeoBundle 'https://github.com/yuratomo/java-api-complete.git'
-NeoBundle 'https://github.com/yuratomo/java-api-android.git'
-" NeoBundle 'https://github.com/vim-scripts/javacomplete.git' , {
+" NeoBundle 'Shougo/neocomplcache.git'
+NeoBundle 'Shougo/neocomplete.vim.git'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'houtsnip/vim-emacscommandline.git'
+NeoBundle 'msanders/cocoa'
+NeoBundle 'tokorom/clang_complete.git'
+NeoBundle 'tokorom/clang_complete-getopts-ios.git'
+NeoBundle 'tomasr/molokai.git'
+NeoBundle 'hallison/vim-markdown.git'
+NeoBundle 'thinca/vim-quickrun.git'
+NeoBundle 'rkulla/pydiction.git'
+NeoBundle 'vim-scripts/grep'
+NeoBundle 'vim-scripts/matrix.vim--Yang.git'
+NeoBundle 'vim-scripts/sudo'
+NeoBundle 'vim-scripts/taglist'
+NeoBundle 'rking/ag'
+NeoBundle 'yuratomo/java-api-complete.git'
+NeoBundle 'yuratomo/java-api-android.git'
+" NeoBundle 'vim-scripts/javacomplete.git' , {
 "             \ 'build' : {
 "             \ 'mac' : 'javac autoload/Reflection.java',
 "             \ 'unix' : 'javac autoload/Reflection.java',
 "             \ },
 "             \ }
 " NeoBundle 'https://github.com/anddam/android-javacomplete.git'
-NeoBundle 'https://github.com/bling/vim-airline.git'
+NeoBundle 'bling/vim-airline.git'
 
 
 filetype plugin indent on
