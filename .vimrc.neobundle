@@ -13,8 +13,8 @@ let g:neobundle#types#git#default_protocol = 'git'
 NeoBundle 'Shougo/neobundle'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/vimfiler.git'
-NeoBundle 'Shougo/vimproc.git', {
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'Shougo/vimproc.vim', {
             \ 'build' : {
             \     'windows' : 'make -f make_mingw32.mak',
             \     'cygwin' : 'make -f make_cygwin.mak',
@@ -23,21 +23,21 @@ NeoBundle 'Shougo/vimproc.git', {
             \    },
             \ }
 " NeoBundle 'Shougo/neocomplcache.git'
-NeoBundle 'Shougo/neocomplete.vim.git'
-NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'houtsnip/vim-emacscommandline.git'
-NeoBundle 'msanders/cocoa'
+NeoBundle 'msanders/cocoa.vim'
 NeoBundle 'tokorom/clang_complete.git'
 NeoBundle 'tokorom/clang_complete-getopts-ios.git'
 NeoBundle 'tomasr/molokai.git'
 NeoBundle 'hallison/vim-markdown.git'
 NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'rkulla/pydiction.git'
-NeoBundle 'vim-scripts/grep'
+NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'vim-scripts/matrix.vim--Yang.git'
-NeoBundle 'vim-scripts/sudo'
-NeoBundle 'vim-scripts/taglist'
-NeoBundle 'rking/ag'
+NeoBundle 'vim-scripts/sudo.vim'
+NeoBundle 'vim-scripts/taglist.vim'
+NeoBundle 'rking/ag.vim'
 NeoBundle 'yuratomo/java-api-complete.git'
 NeoBundle 'yuratomo/java-api-android.git'
 " NeoBundle 'vim-scripts/javacomplete.git' , {
