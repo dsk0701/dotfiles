@@ -13,3 +13,6 @@ else
     set gfn=DejaVu\ Sans\ Mono\ 10
 endif
 
+"自動的に日本語入力(IM)をオンにする機能を無効
+set imdisable
+
