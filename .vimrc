@@ -73,9 +73,9 @@ highlight WhitespaceEOL term=underline ctermbg=DarkMagenta guibg=DarkMagenta
 aug highlightIdegraphicSpace
     au!
     au Colorscheme * highlight WhitespaceEOL term=underline ctermbg=DarkMagenta guibg=DarkMagenta
-    au BufEnter *.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
-    au BufEnter *.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m2 = matchadd("WhitespaceEOL", '^\t')
-    au BufEnter *.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m3 = matchadd("WhitespaceEOL", '　')
+    au BufEnter,BufRead *.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
+    au BufEnter,BufRead *.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m2 = matchadd("WhitespaceEOL", '^\t')
+    au BufEnter,BufRead *.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m3 = matchadd("WhitespaceEOL", '　')
 aug END
 
 " タブのキーマッピング.
@@ -439,7 +439,7 @@ if has('mac')
     au BufEnter *.c,*.cpp,*.m  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/tags
     au BufEnter *.c,*.cpp,*.m  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/tags
 
-    au BufEnter *.java  set tags+=~/var/dev/ref/ae/src/android-2.3.1_r1/frameworks/tags
+    au BufEnter *.java  set tags+=~/var/dev/ref/ae/src/android-4.0.1_r1/frameworks/tags
 
     " for grep.vim.
     if system('which gxargs')
