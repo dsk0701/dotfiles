@@ -40,6 +40,8 @@ NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'yuratomo/java-api-complete.git'
+NeoBundle 'yuratomo/java-api-javax.git'
+NeoBundle 'yuratomo/java-api-org.git'
 NeoBundle 'yuratomo/java-api-android.git'
 " NeoBundle 'vim-scripts/javacomplete.git' , {
 "             \ 'build' : {
