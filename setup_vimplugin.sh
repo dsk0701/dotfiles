@@ -26,12 +26,6 @@ mkdir -p ~/.vim/bundle
 ErrorCheck git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
 # -------------------------
-# tmux
-# -------------------------
-mkdir -p ~/.tmux
-ErrorCheck git clone https://github.com/yonchu/used-mem.git
-
-# -------------------------
 # pydiction
 # -------------------------
 pydiction_dir=~/.vim/bundle/pydiction
