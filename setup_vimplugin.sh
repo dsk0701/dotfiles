@@ -26,6 +26,12 @@ mkdir -p ~/.vim/bundle
 ErrorCheck git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
 # -------------------------
+# tmux
+# -------------------------
+mkdir -p ~/.tmux
+ErrorCheck git clone https://github.com/yonchu/used-mem.git
+
+# -------------------------
 # pydiction
 # -------------------------
 pydiction_dir=~/.vim/bundle/pydiction
@@ -66,22 +72,4 @@ if [ $? -eq 0 ]; then
     popd
     rm -rf temp
 fi
-
-# submodule_dirs=`git submodule | awk '{print $2}'`
-# 
-# for submodule_dir in ${submodule_dirs}
-# do
-#     pushd ${submodule_dir}
-# 
-#     git status | grep "Not currently on any branch"
-# 
-#     if [ $? -eq 0 ]; then
-#         git branch -a | grep master
-#         if [ $? -eq 0 ]; then
-#             ErrorCheck git checkout master
-#         fi
-#     fi
-# 
-#     popd
-# done
 

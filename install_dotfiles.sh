@@ -2,10 +2,15 @@
 
 cd $(dirname $0)
 
-if [ ! -L $HOME/.vim ] && [ -d $HOME/.vim ]; then
-    echo "Back up .vim directory."
-    mv $HOME/.vim{,.BAK}
-fi
+back_up_dirs=".vim .tmux"
+
+for dir in $back_up_dirs
+do
+    if [ ! -L $HOME/$dir ] && [ -d $HOME/$dir ]; then
+        echo "Back up $dir directory."
+        mv $HOME/$dir{,.BAK}
+    fi
+done
 
 for dotfile in \.?*
 do
