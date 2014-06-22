@@ -14,5 +14,8 @@ export PATH=~/bin/android-ndk-r8e:$PATH
 export ADT_ECLIPSE_HOME=~/bin/adt-bundle-mac-x86_64-20130219/eclipse
 
 # Pure eclipse.
-export ECLIPSE_HOME=/Applications/eclipse
+# export ECLIPSE_HOME=/Applications/eclipse
+
+# python powerline.
+export PATH=~/Library/Python/2.7/bin:$PATH
 
