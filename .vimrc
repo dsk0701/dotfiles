@@ -50,6 +50,10 @@ set hlsearch
 " 検索時のハイライトをESCキー連打で解除.
 nnoremap <Esc><Esc> :noh<Enter>
 
+" USキーボードで:と;を入れ替える.
+nnoremap ; :
+nnoremap : ;
+
 " 無名レジスタに入るデータが*レジスタにも入るようにする.
 set clipboard+=unnamed
 
@@ -405,8 +409,8 @@ if has('mac')
     set formatoptions=q
 
     " tag ファイル設定.
-    au BufEnter *.c,*.cpp,*.m  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/tags
-    au BufEnter *.c,*.cpp,*.m  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/tags
+    au BufEnter *.c,*.cpp,*.m,*.h  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/tags
+    au BufEnter *.c,*.cpp,*.m,*.h  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/tags
 
     au BufEnter *.java  set tags+=~/var/dev/ref/ae/src/android-4.0.1_r1/frameworks/tags
 

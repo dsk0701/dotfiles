@@ -25,3 +25,7 @@ set hlsearch
 " 検索時のハイライトをESCキー連打で解除.
 nnoremap <Esc><Esc> :noh<Enter>
 
+" USキーボードで:と;を入れ替える.
+nnoremap ; :
+nnoremap : ;
+
