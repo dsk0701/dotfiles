@@ -22,7 +22,6 @@ NeoBundle 'Shougo/vimproc.vim', {
             \     'unix' : 'make -f make_unix.mak',
             \    },
             \ }
-" NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'houtsnip/vim-emacscommandline.git'
@@ -30,7 +29,7 @@ NeoBundle 'msanders/cocoa.vim'
 NeoBundle 'tokorom/clang_complete.git'
 NeoBundle 'tokorom/clang_complete-getopts-ios.git'
 NeoBundle 'tomasr/molokai.git'
-NeoBundle 'hallison/vim-markdown.git'
+NeoBundle 'rcmdnk/vim-markdown.git'
 NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'rkulla/pydiction.git'
@@ -50,7 +49,6 @@ NeoBundle 'yuratomo/java-api-android.git'
 "             \ },
 "             \ }
 " NeoBundle 'https://github.com/anddam/android-javacomplete.git'
-" NeoBundle 'bling/vim-airline.git'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive.git'
 

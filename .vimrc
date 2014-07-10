@@ -13,6 +13,8 @@ set t_Co=256
 " テーマ.
 " colorscheme koehler
 colorscheme molokai
+" molokai の Search だけ見難いので変更
+au Colorscheme * highlight Search term=reverse cterm=reverse gui=reverse guifg=#455354 guibg=fg
 
 " 行番号表示.
 set number
@@ -408,10 +410,10 @@ if has('mac')
     " 勝手に改行しない.
     set formatoptions=q
 
-    " tag ファイル設定.
-    au BufEnter *.c,*.cpp,*.m,*.h  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/tags
-    au BufEnter *.c,*.cpp,*.m,*.h  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/tags
+    " iOS tag ファイル設定.
+    au BufEnter *.c,*.cpp,*.m,*.h  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/tags
 
+    " Android tag ファイル設定.
     au BufEnter *.java  set tags+=~/var/dev/ref/ae/src/android-4.0.1_r1/frameworks/tags
 
     " for grep.vim.

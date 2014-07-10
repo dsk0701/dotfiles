@@ -254,6 +254,9 @@ case "${OSTYPE}" in
         # override colors for ls.
         alias ls="ls -G -w"
 
+        # updatedb
+        alias updatedb="sudo /usr/libexec/locate.updatedb"
+
         # ls color 設定
         export LSCOLORS=gxfxcxdxbxegedabagacad
 
