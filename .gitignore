@@ -1,4 +1,5 @@
 *.swp
+*.un~
 tags
 .vim/.netrwhist
 .vim/bundle
