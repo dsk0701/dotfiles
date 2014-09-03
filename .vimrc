@@ -4,6 +4,9 @@
 " 色を付ける.
 syntax on
 
+" undo ファイル off.
+set noundofile
+
 " ファイルタイププラグインとインデントを有効.
 filetype plugin indent on
 
