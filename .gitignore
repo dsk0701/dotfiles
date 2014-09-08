@@ -13,4 +13,10 @@ tags
 !**/*.xcodeproj/xcshareddata
 **/*.xcworkspace/xcuserdata/
 
+# android studio
+.gradle
+/local.properties
+.idea
+.DS_Store
+/config.properties
 
