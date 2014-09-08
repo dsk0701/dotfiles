@@ -5,13 +5,13 @@ export GIT_SSL_NO_VERIFY=true
 export PATH=~/bin:$PATH
 
 # android sdk.
-export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools:$PATH
+# export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools:$PATH
 
 # android ndk.
-export PATH=~/bin/android-ndk-r8e:$PATH
+# export PATH=~/bin/android-ndk-r10:$PATH
 
 # ADT eclipse.
-export ADT_ECLIPSE_HOME=~/bin/adt-bundle-mac-x86_64-20130219/eclipse
+# export ADT_ECLIPSE_HOME=~/bin/adt-bundle-mac-x86_64-20130219/eclipse
 
 # Pure eclipse.
 # export ECLIPSE_HOME=/Applications/eclipse
@@ -19,3 +19,22 @@ export ADT_ECLIPSE_HOME=~/bin/adt-bundle-mac-x86_64-20130219/eclipse
 # python powerline.
 export PATH=~/Library/Python/2.7/bin:$PATH
 
+
+# Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin
+
+# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
+export COCOS_CONSOLE_ROOT=/Users/dsk/bin/cocos2d-x-3.2/tools/cocos2d-console/bin
+export PATH=$COCOS_CONSOLE_ROOT:$PATH
+
+# Add environment variable NDK_ROOT for cocos2d-x
+export NDK_ROOT=/Users/dsk/bin/android-ndk-r10
+export PATH=$NDK_ROOT:$PATH
+
+# Add environment variable ANDROID_SDK_ROOT for cocos2d-x
+export ANDROID_SDK_ROOT=/Applications/Android\ Studio.app/sdk
+export PATH=$ANDROID_SDK_ROOT:$PATH
+export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
+
+# Add environment variable ANT_ROOT for cocos2d-x
+export ANT_ROOT=/usr/local/bin
