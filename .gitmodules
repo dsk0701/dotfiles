@@ -1,7 +1,3 @@
-[submodule ".vim/bundle/cocoa.vim"]
-	path = .vim/bundle/cocoa.vim
-	url = https://github.com/msanders/cocoa.vim.git
-    ignore = dirty
 [submodule ".tmux/tmux-powerline"]
 	path = .tmux/tmux-powerline
 	url = git://github.com/erikw/tmux-powerline.git

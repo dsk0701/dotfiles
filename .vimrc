@@ -1,3 +1,6 @@
+" 参考ページ
+" https://github.com/tokorom/dotfiles/blob/master/.vimrc
+
 " vundle設定を読み込む
 :silent! source <sfile>:h/.vimrc.neobundle
 
@@ -104,10 +107,6 @@ vnoremap <expr> h col('.') == 1 && foldlevel(line('.')) > 0 ? 'zcgv' : 'h'
 vnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv0' : 'l'
 
 " ciy でカーソル位置の単語をヤンクした文字列で置換する.
-" nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
-" nnoremap <silent> cy   ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
-" vnoremap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
-
 nnoremap <silent> ciy ciw<C-r>0<ESC>
 nnoremap <silent> cy   ce<C-r>0<ESC>
 vnoremap <silent> cy   c<C-r>0<ESC>
@@ -439,6 +438,25 @@ if has('mac')
     let s:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
     if isdirectory(s:clang_library_path)
         let g:clang_library_path=s:clang_library_path
+    endif
+
+    " xcode-actions.vim
+    if neobundle#tap('xcode-actions.vim')
+    function! neobundle#tapped.hooks.on_source(bundle)
+    "-----------------------------------------------------------------------------
+
+    augroup xcode-actions.vim
+      autocmd!
+      autocmd FileType objc,swift nmap ,b <Plug>(xcode-actions-build)
+      autocmd FileType objc,swift nmap ,r <Plug>(xcode-actions-run)
+      autocmd FileType objc,swift nmap ,c <Plug>(xcode-actions-clean)
+      autocmd FileType objc,swift nmap ,u <Plug>(xcode-actions-test)
+      autocmd FileType objc,swift nmap ,o <Plug>(xcode-actions-openfile)
+    augroup END
+
+    "-----------------------------------------------------------------------------
+    endfunction
+    call neobundle#untap()
     endif
 
 " windows.

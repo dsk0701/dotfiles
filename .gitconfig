@@ -5,6 +5,9 @@
 	name = dsk0701
 	email = d.dubandtribal@gmail.com
 
+	# name = shiraishi
+	# email = shiraishi@fotome.jp
+
 [core]
 	excludesfile = ~/.gitignore
 
