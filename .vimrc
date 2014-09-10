@@ -297,6 +297,14 @@ let g:clang_auto_select = 0
 let g:clang_use_library = 1
 let g:clang_user_options = '-std=c++11'
 
+" neocomplete objc dictionary.
+call neocomplete_ios_dictionary#configure_ios_dict()
+
+" neocomplete swift dictionary.
+call neocomplete_swift_dictionary#configure_swift_dict()
+
+" 辞書補完の設定
+set complete+=k
 
 " --------------------------------------------------
 " neosnippet

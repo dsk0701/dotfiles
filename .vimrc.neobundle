@@ -30,6 +30,8 @@ NeoBundle 'Shougo/vimproc.vim', {
       \    },
       \ }
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundleLazy 'tokorom/neocomplete-ios-dictionary', {'depends' : 'Shougo/neocomplete.vim', 'on_source': 'neocomplete.vim'}
+NeoBundleLazy 'tokorom/neocomplete-swift-dictionary', {'depends' : 'Shougo/neocomplete.vim', 'on_source': 'neocomplete.vim'}
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'houtsnip/vim-emacscommandline.git'
