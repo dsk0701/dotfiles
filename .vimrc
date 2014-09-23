@@ -455,11 +455,11 @@ if has('mac')
 
     augroup xcode-actions.vim
       autocmd!
-      autocmd FileType objc,swift nmap ,b <Plug>(xcode-actions-build)
-      autocmd FileType objc,swift nmap ,r <Plug>(xcode-actions-run)
-      autocmd FileType objc,swift nmap ,c <Plug>(xcode-actions-clean)
-      autocmd FileType objc,swift nmap ,u <Plug>(xcode-actions-test)
-      autocmd FileType objc,swift nmap ,o <Plug>(xcode-actions-openfile)
+      autocmd FileType objc,swift,c,cpp nmap ,b <Plug>(xcode-actions-build)
+      autocmd FileType objc,swift,c,cpp nmap ,r <Plug>(xcode-actions-run)
+      autocmd FileType objc,swift,c,cpp nmap ,c <Plug>(xcode-actions-clean)
+      autocmd FileType objc,swift,c,cpp nmap ,u <Plug>(xcode-actions-test)
+      autocmd FileType objc,swift,c,cpp nmap ,o <Plug>(xcode-actions-openfile)
     augroup END
 
     "-----------------------------------------------------------------------------

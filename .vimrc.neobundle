@@ -63,7 +63,7 @@ NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'toyamarinyon/vim-swift'
 
 " Xcode
-NeoBundleLazy 'tokorom/xcode-actions.vim', {'filetypes': ['objc', 'swift']}
+NeoBundleLazy 'tokorom/xcode-actions.vim', {'filetypes': ['objc', 'swift', 'c', 'cpp']}
 
 
 call neobundle#end()
