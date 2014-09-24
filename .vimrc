@@ -85,9 +85,9 @@ highlight WhitespaceEOL term=underline ctermbg=DarkMagenta guibg=DarkMagenta
 aug highlightIdegraphicSpace
     au!
     au Colorscheme * highlight WhitespaceEOL term=underline ctermbg=DarkMagenta guibg=DarkMagenta
-    au BufEnter,BufRead *.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
-    au BufEnter,BufRead *.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m2 = matchadd("WhitespaceEOL", '^\t')
-    au BufEnter,BufRead *.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m3 = matchadd("WhitespaceEOL", '　')
+    au BufEnter,BufRead *.swift,*.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
+    au BufEnter,BufRead *.swift,*.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m2 = matchadd("WhitespaceEOL", '^\t')
+    au BufEnter,BufRead *.swift,*.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.mk,Makefile let w:m3 = matchadd("WhitespaceEOL", '　')
 aug END
 
 " タブのキーマッピング.

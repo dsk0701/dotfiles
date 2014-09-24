@@ -12,11 +12,12 @@ tags
 !**/*.xcodeproj/project.pbxproj
 !**/*.xcodeproj/xcshareddata
 **/*.xcworkspace/xcuserdata/
+xcuserdata
+build
 
 # android studio
 .gradle
 /local.properties
 .idea
-.DS_Store
 /config.properties
 
