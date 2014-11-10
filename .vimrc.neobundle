@@ -17,7 +17,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 let g:neobundle#types#git#default_protocol = 'git'
 
-NeoBundle 'Shougo/neobundle'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimfiler.vim'
