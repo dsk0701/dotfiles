@@ -5,6 +5,8 @@ tags
 .vim/bundle
 .vim/eclim
 .vim/plugin
+
+# mac
 .DS_Store
 
 # Xcode
@@ -12,6 +14,7 @@ tags
 !**/*.xcodeproj/project.pbxproj
 !**/*.xcodeproj/xcshareddata
 **/*.xcworkspace/xcuserdata/
+**/*.playground/*
 xcuserdata
 build
 
