@@ -131,10 +131,10 @@ if executable('ag')
 endif
 
 " key-mappings.
-nnoremap <silent> ,ug :Unite grep::-n:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-nnoremap <silent> ,ugi :Unite grep::-in:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-nnoremap <silent> ,ugw :Unite grep::-wn:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-nnoremap <silent> ,uga :Unite grep::-n:<C-R><C-W> -auto-preview -buffer-name=grep-buffer -no-quit<CR>
+nnoremap <silent> ,ug :Unite grep:.::<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+nnoremap <silent> ,ugi :Unite grep:.:-i:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+nnoremap <silent> ,ugw :Unite grep:.:-w:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+nnoremap <silent> ,uga :Unite grep:.::<C-R><C-W> -auto-preview -buffer-name=grep-buffer -no-quit<CR>
 
 " --------------------------------------------------
 " unite
@@ -463,7 +463,7 @@ if has('mac')
       autocmd FileType objc,swift,c,cpp nmap ,b <Plug>(xcode-actions-build)
       autocmd FileType objc,swift,c,cpp nmap ,r <Plug>(xcode-actions-run)
       autocmd FileType objc,swift,c,cpp nmap ,c <Plug>(xcode-actions-clean)
-      autocmd FileType objc,swift,c,cpp nmap ,u <Plug>(xcode-actions-test)
+      autocmd FileType objc,swift,c,cpp nmap ,t <Plug>(xcode-actions-test)
       autocmd FileType objc,swift,c,cpp nmap ,o <Plug>(xcode-actions-openfile)
     augroup END
 
