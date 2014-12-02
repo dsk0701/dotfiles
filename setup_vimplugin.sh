@@ -17,7 +17,7 @@ ErrorCheck git submodule update
 # -------------------------
 # cocoa
 # -------------------------
-ErrorCheck patch -d .vim/bundle/cocoa.vim -p1 < cocoa.vim.objcpp.patch
+# ErrorCheck patch -d .vim/bundle/cocoa.vim -p1 < cocoa.vim.objcpp.patch
 
 # -------------------------
 # neobundle
