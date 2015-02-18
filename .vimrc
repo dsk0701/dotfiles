@@ -411,6 +411,11 @@ let g:vimshell_force_overwrite_statusline = 0
 let g:vim_markdown_initial_foldlevel=2
 
 " --------------------------------------------------
+" previm
+" --------------------------------------------------
+let g:previm_open_cmd = 'open -a Google\ Chrome'
+
+" --------------------------------------------------
 " pydiction
 " --------------------------------------------------
 " filetype plugin on
