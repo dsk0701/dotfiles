@@ -23,7 +23,7 @@ ErrorCheck git submodule update
 # neobundle
 # -------------------------
 mkdir -p ~/.vim/bundle
-ErrorCheck git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+ErrorCheck git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
 # -------------------------
 # pydiction
