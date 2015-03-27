@@ -453,7 +453,7 @@ if has('mac')
     au BufEnter *.java  set tags+=~/var/dev/ref/ae/src/android-4.0.1_r1/tags
 
     " play framework ファイル設定.
-    au BufEnter *.java  set tags+=~/var/dev/ref/play/playframework-2.3.8/framework/src/tags
+    au BufEnter *.java  set tags+=~/var/dev/ref/playframework/framework/src
 
     " for grep.vim.
     if system('which gxargs')
@@ -520,4 +520,5 @@ elseif has('win32')
     set fileformat=unix
 
 endif
+
 
