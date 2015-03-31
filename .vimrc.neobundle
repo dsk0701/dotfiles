@@ -15,7 +15,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
 " Note: You don't set neobundle setting in .gvimrc!
-let g:neobundle#types#git#default_protocol = 'git'
+let g:neobundle#types#git#default_protocol = 'https'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
@@ -31,6 +31,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundleLazy 'tokorom/neocomplete-ios-dictionary', {'depends' : 'Shougo/neocomplete.vim', 'on_source': 'neocomplete.vim'}
 NeoBundleLazy 'tokorom/neocomplete-swift-dictionary', {'depends' : 'Shougo/neocomplete.vim', 'on_source': 'neocomplete.vim'}
+NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', {'autoload' : {'insert' : 1, 'filetypes': 'ruby'}}
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'houtsnip/vim-emacscommandline.git'
