@@ -308,6 +308,8 @@ call neocomplete_swift_dictionary#configure_swift_dict()
 " 辞書補完の設定
 set complete+=k
 
+let g:rsenseUseOmniFunc = 1
+
 " --------------------------------------------------
 " neosnippet
 " --------------------------------------------------
