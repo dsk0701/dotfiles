@@ -1,8 +1,12 @@
 # git ssl settings.
 export GIT_SSL_NO_VERIFY=true
 
-# home/bin.
-export PATH=~/bin:$PATH
+# Go language
+if [ -x "`which go`" ]; then
+      export GOROOT=`go env GOROOT`
+      export GOPATH=$HOME/bin/go
+      export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi
 
 # android sdk.
 # export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools:$PATH
