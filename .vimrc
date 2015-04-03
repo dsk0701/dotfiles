@@ -308,6 +308,12 @@ call neocomplete_swift_dictionary#configure_swift_dict()
 " 辞書補完の設定
 set complete+=k
 
+" --------------------------------------------------
+" ruby
+" --------------------------------------------------
+au FileType ruby setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
+" RSense
 let g:rsenseUseOmniFunc = 1
 
 " --------------------------------------------------
