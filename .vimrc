@@ -317,6 +317,11 @@ au FileType ruby setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
 let g:rsenseUseOmniFunc = 1
 
 " --------------------------------------------------
+" Yaml
+" --------------------------------------------------
+au FileType yaml setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
+" --------------------------------------------------
 " neosnippet
 " --------------------------------------------------
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
