@@ -8,6 +8,9 @@
 	# name = shiraishi
 	# email = shiraishi@fotome.jp
 
+	# name = d-shiraishi
+	# email = shiraishi@fotome.jp
+
 [core]
 	excludesfile = ~/.gitignore
 
