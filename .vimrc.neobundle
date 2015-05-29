@@ -87,6 +87,8 @@ NeoBundle 'cohama/agit.vim'
 " Xcode
 NeoBundleLazy 'tokorom/xcode-actions.vim', {'filetypes': ['objc', 'swift', 'c', 'cpp']}
 
+" JavaScript
+NeoBundle 'pangloss/vim-javascript.git'
 
 call neobundle#end()
 
