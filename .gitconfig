@@ -2,13 +2,10 @@
 	ui = auto
 
 [user]
-	name = dsk0701
+    name = dsk0701
 	email = d.dubandtribal@gmail.com
 
 	# name = shiraishi
-	# email = shiraishi@fotome.jp
-
-	# name = d-shiraishi
 	# email = shiraishi@fotome.jp
 
 [core]
@@ -24,3 +21,5 @@
 
 [push]
 	default = simple
+[credential]
+	helper = osxkeychain
