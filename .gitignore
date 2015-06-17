@@ -9,14 +9,40 @@ tags
 # mac
 .DS_Store
 
-# Xcode
-**/*.xcodeproj/*
-!**/*.xcodeproj/project.pbxproj
-!**/*.xcodeproj/xcshareddata
-**/*.xcworkspace/xcuserdata/
-**/*.playground/*
+# iOS Development
+# see - https://github.com/github/gitignore/blob/master/Swift.gitignore
+# Cocoa Pods
+Pods/
+
+# Carthage
+Carthage/Build
+
+## Build generated
+build/
+DerivedData
+
+## Various settings
+*.xcworkspace
+!default.xcworkspace
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
 xcuserdata
-build
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+
 
 # android studio
 .gradle
