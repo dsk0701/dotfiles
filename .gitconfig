@@ -21,5 +21,12 @@
 
 [push]
 	default = simple
+
 [credential]
 	helper = osxkeychain
+
+#driver for merging XCode project files
+[merge "mergepbx"]
+        name = XCode project files merger
+        driver = mergepbx %O %A %B
+
