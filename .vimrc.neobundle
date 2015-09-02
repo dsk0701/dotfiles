@@ -90,6 +90,9 @@ NeoBundleLazy 'tokorom/xcode-actions.vim', {'filetypes': ['objc', 'swift', 'c', 
 " JavaScript
 NeoBundle 'pangloss/vim-javascript.git'
 
+" WakaTime
+" NeoBundle 'wakatime/vim-wakatime'
+
 call neobundle#end()
 
 " Required:
