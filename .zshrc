@@ -224,7 +224,9 @@ preexec () {
 }
 
 # rbenv
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then
+    eval "$(rbenv init -)"
+fi
 
 # --------------------------------------------------------------------------------
 # 環境変数
