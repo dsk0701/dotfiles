@@ -48,5 +48,5 @@ xcuserdata
 .gradle
 /local.properties
 .idea
-/config.properties
+/release.properties
 
