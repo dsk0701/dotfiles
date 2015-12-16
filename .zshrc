@@ -228,6 +228,11 @@ if which rbenv > /dev/null; then
     eval "$(rbenv init -)"
 fi
 
+# Visual Studio Code
+code () {
+    VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;
+}
+
 # --------------------------------------------------------------------------------
 # 環境変数
 # --------------------------------------------------------------------------------
