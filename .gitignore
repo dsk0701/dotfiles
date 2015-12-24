@@ -1,7 +1,7 @@
 *.swp
 *.un~
 tags
-.vim/.netrwhist
+.netrwhist
 .vim/bundle
 .vim/eclim
 .vim/plugin

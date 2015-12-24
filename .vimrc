@@ -2,7 +2,7 @@
 " https://github.com/tokorom/dotfiles/blob/master/.vimrc
 
 " vundle設定を読み込む
-:silent! source <sfile>:h/.vimrc.neobundle
+:source ~/.vimrc.neobundle
 
 " 色を付ける.
 syntax on
