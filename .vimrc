@@ -137,20 +137,31 @@ if has('nvim')
     " --------------------------------------------------
     hi CursorLine ctermfg=magenta
 
-    call denite#custom#source('file_mru', 'converters',
-                \ ['converter_relative_word'])
+    " Change mappings.
+    call denite#custom#map(
+                \ 'insert',
+                \ '<C-n>',
+                \ '<denite:move_to_next_line>',
+                \ 'noremap'
+                \)
+    call denite#custom#map(
+                \ 'insert',
+                \ '<C-p>',
+                \ '<denite:move_to_previous_line>',
+                \ 'noremap'
+                \)
 
     " Ripgrep command on grep source
     call denite#custom#var('grep', 'command', ['rg'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'final_opts', [])
-    call denite#custom#var('grep', 'separator', ['--'])
     call denite#custom#var('grep', 'default_opts',
                 \ ['--vimgrep', '--no-heading'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
 
-    " Change mappings.
-    call denite#custom#map('_', "\<C-n>", 'move_to_next_line')
-    call denite#custom#map('_', "\<C-p>", 'move_to_prev_line')
+    call denite#custom#source('file_mru', 'converters',
+                \ ['converter_relative_word'])
 
     nnoremap <silent> ,dg  :Denite grep -buffer-name=grep-buffer -no-quit<CR><C-R><C-W>
     nnoremap <silent> ,dga :Denite grep -buffer-name=grep-buffer -no-quit -auto-preview<CR>

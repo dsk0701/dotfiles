@@ -16,10 +16,10 @@ tags
 Pods/
 
 # Carthage
-Carthage/Build
+# Carthage/Build
 
 ## Build generated
-build/
+# build/
 DerivedData
 
 ## Various settings
