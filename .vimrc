@@ -267,7 +267,7 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.php =
-\ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+\ '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.c =
 \ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
 let g:neocomplete#sources#omni#input_patterns.cpp =
@@ -307,6 +307,11 @@ call neocomplete_swift_dictionary#configure_swift_dict()
 
 " 辞書補完の設定
 set complete+=k
+
+" --------------------------------------------------
+" neocomplete-php
+" --------------------------------------------------
+let g:neocomplete_php_locale = 'ja'
 
 " --------------------------------------------------
 " ruby
