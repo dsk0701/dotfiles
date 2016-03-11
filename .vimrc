@@ -127,14 +127,13 @@ if executable('ag')
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_grep_default_opts = '--nocolor --nogroup'
     let g:unite_source_grep_recursive_opt = ''
-    let g:unite_source_grep_max_candidates = 200
 endif
 
 " key-mappings.
-nnoremap <silent> ,ug :Unite grep:.::<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-nnoremap <silent> ,ugi :Unite grep:.:-i:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-nnoremap <silent> ,ugw :Unite grep:.:-w:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-nnoremap <silent> ,uga :Unite grep:.::<C-R><C-W> -auto-preview -buffer-name=grep-buffer -no-quit<CR>
+nnoremap <silent> ,ug  :Unite grep -buffer-name=grep-buffer -no-quit<CR>
+nnoremap <silent> ,uga :Unite grep -buffer-name=grep-buffer -no-quit -auto-preview<CR>
+nnoremap <silent> ,ugi  :Unite grep:.:-i:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+nnoremap <silent> ,ugw  :Unite grep:.:-w:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
 
 " --------------------------------------------------
 " unite
@@ -303,7 +302,7 @@ let g:clang_user_options = '-std=c++11'
 call neocomplete_ios_dictionary#configure_ios_dict()
 
 " neocomplete swift dictionary.
-call neocomplete_swift_dictionary#configure_swift_dict()
+let g:swift_dict_with_neocomplete = 1
 
 " 辞書補完の設定
 set complete+=k
@@ -467,13 +466,13 @@ if has('mac')
     set formatoptions=q
 
     " iOS tag ファイル設定.
-    au BufEnter *.c,*.cpp,*.m,*.h  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/tags
+    " au BufEnter *.c,*.cpp,*.m,*.h  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/tags
 
     " Android tag ファイル設定.
     au BufEnter *.java  set tags+=~/var/dev/ref/ae/src/android-4.0.1_r1/tags
 
     " play framework ファイル設定.
-    au BufEnter *.java  set tags+=~/var/dev/ref/play/playframework-2.3.8/framework/src/tags
+    " au BufEnter *.java  set tags+=~/var/dev/ref/play/playframework-2.3.8/framework/src/tags
 
     " for grep.vim.
     if system('which gxargs')
