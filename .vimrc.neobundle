@@ -37,20 +37,10 @@ NeoBundleLazy 'tokorom/neocomplete-swift-dictionary', {
       \ 'depends' : 'Shougo/neocomplete.vim',
       \ 'on_source': 'neocomplete.vim'
       \ }
-" RSnese のリポジトリが無くなった.
-" NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', {
-"       \ 'depends' : ['Shougo/neocomplete.vim', 'marcus/rsense'],
-"       \ 'autoload' : {
-"       \     'insert' : 1,
-"       \     'filetypes': 'ruby'
-"       \     }
-"       \ }
 NeoBundle 'violetyk/neocomplete-php.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'houtsnip/vim-emacscommandline.git'
-NeoBundle 'Rip-Rip/clang_complete'
-NeoBundle 'tokorom/clang_complete-getopts-ios.git'
 NeoBundle 'derekwyatt/vim-scala.git'
 NeoBundle 'tomasr/molokai.git'
 NeoBundle 'rcmdnk/vim-markdown.git'
@@ -62,23 +52,11 @@ NeoBundle 'superbrothers/vim-quickrun-markdown-gfm'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'tpope/vim-endwise.git'
 NeoBundle 'vim-ruby/vim-ruby.git'
-NeoBundle 'rkulla/pydiction.git'
 NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'vim-scripts/matrix.vim--Yang.git'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'yuratomo/java-api-complete.git'
-NeoBundle 'yuratomo/java-api-javax.git'
-NeoBundle 'yuratomo/java-api-org.git'
-NeoBundle 'yuratomo/java-api-android.git'
-" NeoBundle 'vim-scripts/javacomplete.git' , {
-"             \ 'build' : {
-"             \ 'mac' : 'javac autoload/Reflection.java',
-"             \ 'unix' : 'javac autoload/Reflection.java',
-"             \ },
-"             \ }
-" NeoBundle 'https://github.com/anddam/android-javacomplete.git'
 NeoBundle 'toyamarinyon/vim-swift'
 NeoBundle 'itchyny/lightline.vim'
 
@@ -88,9 +66,6 @@ NeoBundle 'cohama/agit.vim'
 
 " Xcode
 NeoBundleLazy 'tokorom/xcode-actions.vim', {'filetypes': ['objc', 'swift', 'c', 'cpp']}
-
-" JavaScript
-NeoBundle 'pangloss/vim-javascript.git'
 
 " WakaTime
 " NeoBundle 'wakatime/vim-wakatime'

@@ -250,16 +250,6 @@ autocmd FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
 autocmd FileType c          setlocal omnifunc=ccomplete#Complete
 autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
-" java-api-complete を使ってみる
-autocmd FileType java       setlocal omnifunc=javaapi#complete
-let g:javaapi#delay_dirs = [
-  \ 'java-api-javax',
-  \ 'java-api-org',
-  \ 'java-api-android',
-  \ ]
-
-" javacomplete を使ってみる
-" autocmd FileType java       setlocal omnifunc=javacomplete#Complete
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -277,29 +267,6 @@ let g:neocomplete#sources#omni#input_patterns.cpp =
 let g:neocomplete#sources#omni#input_patterns.perl =
 \ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 
-
-" setting for using clang_complete with neocomplete.
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_overwrite_completefunc = 1
-let g:neocomplete#force_omni_input_patterns.c =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-let g:neocomplete#force_omni_input_patterns.cpp =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-let g:neocomplete#force_omni_input_patterns.objc =
-      \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
-let g:neocomplete#force_omni_input_patterns.objcpp =
-      \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
-let g:neocomplete#force_omni_input_patterns.ruby =
-      \ '[^. *\t]\.\w*\|\h\w*::'
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-let g:clang_use_library = 1
-let g:clang_user_options = '-std=c++11'
-
-" neocomplete objc dictionary.
-call neocomplete_ios_dictionary#configure_ios_dict()
 
 " neocomplete swift dictionary.
 let g:swift_dict_with_neocomplete = 1
@@ -444,15 +411,6 @@ let g:quickrun_config = {
 " --------------------------------------------------
 let g:previm_open_cmd = 'open -a Google\ Chrome'
 
-" --------------------------------------------------
-" pydiction
-" --------------------------------------------------
-" filetype plugin on
-au FileType python let g:pydiction_location = '~/.vim/after/ftplugin/complete-dict'
-" au FileType python setl autoindent
-" au FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-" au FileType python setl expandtab tabstop=4 shiftwidth=4 softtabstop=4
-
 " mac.
 if has('mac')
     " 透過させる.
@@ -469,7 +427,7 @@ if has('mac')
     " au BufEnter *.c,*.cpp,*.m,*.h  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/tags
 
     " Android tag ファイル設定.
-    au BufEnter *.java  set tags+=~/var/dev/ref/ae/src/android-4.0.1_r1/tags
+    " au BufEnter *.java  set tags+=~/var/dev/ref/ae/src/android-4.0.1_r1/tags
 
     " play framework ファイル設定.
     " au BufEnter *.java  set tags+=~/var/dev/ref/play/playframework-2.3.8/framework/src/tags
@@ -481,32 +439,21 @@ if has('mac')
         let Grep_Find_Use_Xargs = 0
     endif
 
-    " clang_complete setting for objective-c
-    let g:clang_complete_getopts_ios_sdk_directory = '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/'
-
-    " libclang の パス設定
-    let s:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-    if isdirectory(s:clang_library_path)
-        let g:clang_library_path=s:clang_library_path
-    endif
-
     " xcode-actions.vim
     if neobundle#tap('xcode-actions.vim')
-    function! neobundle#tapped.hooks.on_source(bundle)
-    "-----------------------------------------------------------------------------
+        function! neobundle#tapped.hooks.on_source(bundle)
 
-    augroup xcode-actions.vim
-      autocmd!
-      autocmd FileType objc,swift,c,cpp nmap ,b <Plug>(xcode-actions-build)
-      autocmd FileType objc,swift,c,cpp nmap ,r <Plug>(xcode-actions-run)
-      autocmd FileType objc,swift,c,cpp nmap ,c <Plug>(xcode-actions-clean)
-      autocmd FileType objc,swift,c,cpp nmap ,t <Plug>(xcode-actions-test)
-      autocmd FileType objc,swift,c,cpp nmap ,o <Plug>(xcode-actions-openfile)
-    augroup END
+            augroup xcode-actions.vim
+                autocmd!
+                autocmd FileType objc,swift,c,cpp nmap ,b <Plug>(xcode-actions-build)
+                autocmd FileType objc,swift,c,cpp nmap ,r <Plug>(xcode-actions-run)
+                autocmd FileType objc,swift,c,cpp nmap ,c <Plug>(xcode-actions-clean)
+                autocmd FileType objc,swift,c,cpp nmap ,t <Plug>(xcode-actions-test)
+                autocmd FileType objc,swift,c,cpp nmap ,o <Plug>(xcode-actions-openfile)
+            augroup END
 
-    "-----------------------------------------------------------------------------
-    endfunction
-    call neobundle#untap()
+        endfunction
+        call neobundle#untap()
     endif
 
 " windows.
