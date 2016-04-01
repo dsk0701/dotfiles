@@ -1,8 +1,11 @@
 " 参考ページ
 " https://github.com/tokorom/dotfiles/blob/master/.vimrc
 
+" dein
+:source ~/.vimrc.dein
+
 " vundle設定を読み込む
-:source ~/.vimrc.neobundle
+" :source ~/.vimrc.neobundle
 
 " 色を付ける.
 syntax on
@@ -440,21 +443,11 @@ if has('mac')
     endif
 
     " xcode-actions.vim
-    if neobundle#tap('xcode-actions.vim')
-        function! neobundle#tapped.hooks.on_source(bundle)
-
-            augroup xcode-actions.vim
-                autocmd!
-                autocmd FileType objc,swift,c,cpp nmap ,b <Plug>(xcode-actions-build)
-                autocmd FileType objc,swift,c,cpp nmap ,r <Plug>(xcode-actions-run)
-                autocmd FileType objc,swift,c,cpp nmap ,c <Plug>(xcode-actions-clean)
-                autocmd FileType objc,swift,c,cpp nmap ,t <Plug>(xcode-actions-test)
-                autocmd FileType objc,swift,c,cpp nmap ,o <Plug>(xcode-actions-openfile)
-            augroup END
-
-        endfunction
-        call neobundle#untap()
-    endif
+    autocmd FileType objc,swift,c,cpp nmap ,b <Plug>(xcode-actions-build)
+    autocmd FileType objc,swift,c,cpp nmap ,r <Plug>(xcode-actions-run)
+    autocmd FileType objc,swift,c,cpp nmap ,c <Plug>(xcode-actions-clean)
+    autocmd FileType objc,swift,c,cpp nmap ,t <Plug>(xcode-actions-test)
+    autocmd FileType objc,swift,c,cpp nmap ,o <Plug>(xcode-actions-openfile)
 
 " windows.
 elseif has('win32')

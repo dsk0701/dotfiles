@@ -17,6 +17,19 @@ ErrorCheck git submodule update
 # -------------------------
 # neobundle
 # -------------------------
-mkdir -p ~/.vim/bundle
-ErrorCheck git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+BUNDLE_DIR=~/.vim/bundle
+if [ ! -e "${BUNDLE_DIR}/neobundle.vim" ]; then
+    mkdir -p ${BUNDLE_DIR}
+    ErrorCheck git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+fi
+
+# -------------------------
+# dein.vim
+# -------------------------
+DEIN_DIR=~/.vim/dein
+if [ ! -e "${DEIN_DIR}" ]; then
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+    sh ./installer.sh ~/.vim/dein
+    rm -f ./installer.sh
+fi
 
