@@ -278,9 +278,28 @@ let g:swift_dict_with_neocomplete = 1
 set complete+=k
 
 " --------------------------------------------------
-" neocomplete-php
+" php
 " --------------------------------------------------
 let g:neocomplete_php_locale = 'ja'
+
+set iskeyword+=$
+
+if !exists("g:quickrun_config")
+    let g:quickrun_config = {}
+endif
+" let g:quickrun_config["watchdogs_checker/_"] = {
+"       \ "outputter/quickfix/open_cmd" : "",
+"       \ "hook/close_quickfix/enable_exit" : 1,
+"       \ }
+" 
+" " 書き込み後にシンタックスチェックを行う
+" let g:watchdogs_check_BufWritePost_enable = 1
+" 
+" " 一定時間キー入力がなかった場合にシンタックスチェックを行う
+" " バッファに書き込み後、1度だけ行われる
+" let g:watchdogs_check_CursorHold_enable = 1
+" 
+" call watchdogs#setup(g:quickrun_config)
 
 " --------------------------------------------------
 " ruby
