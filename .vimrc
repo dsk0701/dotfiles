@@ -287,9 +287,6 @@ let g:neocomplete_php_locale = 'ja'
 " --------------------------------------------------
 au FileType ruby setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
-" RSense
-let g:rsenseUseOmniFunc = 1
-
 " --------------------------------------------------
 " Yaml
 " --------------------------------------------------
