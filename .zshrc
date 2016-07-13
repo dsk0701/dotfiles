@@ -290,7 +290,7 @@ case "${OSTYPE}" in
         export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
         # HomeBrew 設定
-        export PATH=/usr/local/bin:$PATH
+        export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
         # macvim 設定
         MACVIM_DIR="/Applications/MacVim.app/Contents/MacOS"
