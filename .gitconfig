@@ -1,32 +1,38 @@
 [color]
-	ui = auto
+    ui = auto
 
 [user]
     name = dsk0701
-	email = d.dubandtribal@gmail.com
-
-	# name = shiraishi
-	# email = shiraishi@fotome.jp
+    email = d.dubandtribal@gmail.com
 
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
+    autocrlf = false
 
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
 [push]
-	default = simple
+    default = simple
 
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 
 #driver for merging XCode project files
 [merge "mergepbx"]
-        name = XCode project files merger
-        driver = mergepbx %O %A %B
+    name = XCode project files merger
+    driver = mergepbx %O %A %B
+
+[http]
+    sslVerify = false
+
+[pager]
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
 

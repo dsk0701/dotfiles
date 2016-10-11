@@ -43,3 +43,12 @@ export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 # Add environment variable ANT_ROOT for cocos2d-x
 export ANT_ROOT=/usr/local/bin
 
+# zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# rbenv
+eval "$(rbenv init -)"
+
+# pyenv
+eval "$(pyenv init -)"
+
