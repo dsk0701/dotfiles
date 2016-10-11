@@ -275,7 +275,7 @@ let g:neocomplete#sources#omni#input_patterns.perl =
 
 
 " neocomplete swift dictionary.
-let g:swift_dict_with_neocomplete = 1
+let g:swift_dict_with_neocomplete = 0
 
 " 辞書補完の設定
 set complete+=k
