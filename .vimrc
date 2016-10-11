@@ -19,6 +19,9 @@ filetype plugin indent on
 " 256色使えるように設定.
 set t_Co=256
 
+" スクロールオフセット
+set scrolloff=0
+
 " テーマ.
 " colorscheme koehler
 colorscheme molokai
