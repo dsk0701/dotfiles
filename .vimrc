@@ -81,6 +81,11 @@ set guioptions-=T
 " ステータスラインに文字コードと改行文字の種別を表示.
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
+" ウィンドウ移動時に外部の変更を反映する
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
 
 " 行末の空白文字、行頭のTAB文字、全角スペースをハイライト.
 " master setting.
@@ -177,8 +182,21 @@ if has('nvim')
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#sources#swift#daemon_autostart = 1
 
+    " Use smartcase.
+    let g:deoplete#enable_smart_case = 1
+
     " 一番上の候補を選択状態にする
     set completeopt+=noinsert
+
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function() abort
+        return pumvisible() ? deoplete#close_popup() : "\<CR>"
+    endfunction
 else
     " --------------------------------------------------
     " neocomplete
@@ -426,7 +444,7 @@ let g:vimshell_force_overwrite_statusline = 0
 " --------------------------------------------------
 " vim-markdown
 " --------------------------------------------------
-let g:vim_markdown_initial_foldlevel=2
+let g:vim_markdown_initial_foldlevel=3
 
 " --------------------------------------------------
 " vim-quickrun-markdown-gfm (GitHub flavor markdown)
