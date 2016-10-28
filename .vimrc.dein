@@ -4,26 +4,26 @@ if &compatible
 endif
 
 " Required:
-set runtimepath^=/Users/dsk/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-call dein#begin(expand('/Users/dsk/.vim/dein'))
+call dein#begin(expand('~/.vim/dein'))
 
 " Let dein manage dein
 " Required:
 call dein#add('Shougo/dein.vim')
 
 " Add or remove your plugins here:
+call dein#add('Shougo/denite.nvim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/vimfiler.vim')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('Shougo/neocomplete.vim')
-" call dein#add('tokorom/neocomplete-ios-dictionary')
 call dein#add('tokorom/swift-dict.vim')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('landaire/deoplete-swift') " Need SourceKitten.
-" call dein#add('mitsuse/autocomplete-swift') " Need SourceKittenDaemon.
+call dein#add('mitsuse/autocomplete-swift') " Need SourceKittenDaemon.
 call dein#add('keith/swift.vim')
 call dein#add('violetyk/neocomplete-php.vim')
 call dein#add('Shougo/neosnippet.vim')
@@ -35,10 +35,7 @@ call dein#add('rcmdnk/vim-markdown.git')
 call dein#add('kannokanno/previm.git')
 call dein#add('thinca/vim-quickrun.git')
 call dein#add('osyo-manga/shabadou.vim')
-" call dein#add('osyo-manga/vim-watchdogs')
 call dein#add('dannyob/quickfixstatus')
-" call dein#add('jceb/vim-hier')
-" call dein#add('cohama/vim-hier')
 call dein#add('mattn/webapi-vim')
 call dein#add('tyru/open-browser.vim')
 call dein#add('superbrothers/vim-quickrun-markdown-gfm')
@@ -60,8 +57,7 @@ call dein#add('cohama/agit.vim')
 call dein#add('tokorom/xcode-actions.vim')
 
 " WakaTime
-" NeoBundle 'wakatime/vim-wakatime'
-
+" call dein#add('wakatime/vim-wakatime')
 
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })

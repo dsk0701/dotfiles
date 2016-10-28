@@ -130,52 +130,36 @@ cnoremap <expr> /  getcmdtype() == '/' ? '\/' : '/'
 " --------------------------------------------------
 let g:vimfiler_as_default_explorer = 1
 
-" --------------------------------------------------
-" unite-grep
-" --------------------------------------------------
-" grep のバックエンドを ag にする.
-if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nocolor --nogroup'
-    let g:unite_source_grep_recursive_opt = ''
-endif
-
-" key-mappings.
-nnoremap <silent> ,g  :Unite grep -buffer-name=grep-buffer -no-quit<CR>
-nnoremap <silent> ,ga :Unite grep -buffer-name=grep-buffer -no-quit -auto-preview<CR>
-nnoremap <silent> ,gi  :Unite grep:.:-i:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-nnoremap <silent> ,gw  :Unite grep:.:-w:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-
-" --------------------------------------------------
-" unite
-" --------------------------------------------------
-" 入力モードで開始
-let g:unite_enable_start_insert=1
-" バッファ一覧
-noremap <C-P> :Unite buffer<CR>
-" ファイル一覧
-noremap <C-N> :Unite -buffer-name=file file<CR>
-" 最近使ったファイルの一覧
-noremap <C-Z> :Unite file_mru<CR>
-" ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-" ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-" 初期設定関数を起動する
-au FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  " Overwrite settings.
-endfunction
-" 前回のバッファを開く
-nnoremap <silent> ,ur :UniteResume<CR>
-
-
 if has('nvim')
+
+    " --------------------------------------------------
+    " denite
+    " --------------------------------------------------
+    call denite#custom#source('file_mru', 'converters',
+                \ ['converter_relative_word'])
+
+    " Ripgrep command on grep source
+    call denite#custom#var('grep', 'command', ['rg'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'final_opts', [])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'default_opts',
+                \ ['--vimgrep', '--no-heading'])
+
+    " grep key mappings.
+    call denite#custom#map('_', "\<C-n>", 'move_to_next_line')
+    call denite#custom#map('_', "\<C-p>", 'move_to_prev_line')
+
+    nnoremap <silent> ,g  :Denite grep -buffer-name=grep-buffer -no-quit<CR>
+    nnoremap <silent> ,ga :Denite grep -buffer-name=grep-buffer -no-quit -auto-preview<CR>
+    nnoremap <silent> ,gi  :Denite grep:.:-i:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+    nnoremap <silent> ,gw  :Denite grep:.:-w:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+
+    " ファイル一覧
+    noremap <C-N> :Denite file_rec<CR>
+    " 最近使ったファイルの一覧
+    noremap <C-M> :Denite file_mru<CR>
+
     " --------------------------------------------------
     " deoplete
     " --------------------------------------------------
@@ -198,6 +182,50 @@ if has('nvim')
         return pumvisible() ? deoplete#close_popup() : "\<CR>"
     endfunction
 else
+    " --------------------------------------------------
+    " unite-grep
+    " --------------------------------------------------
+    " grep のバックエンドを ag にする.
+    if executable('ag')
+        let g:unite_source_grep_command = 'ag'
+        let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+        let g:unite_source_grep_recursive_opt = ''
+    endif
+
+    " key-mappings.
+    nnoremap <silent> ,g  :Unite grep -buffer-name=grep-buffer -no-quit<CR>
+    nnoremap <silent> ,ga :Unite grep -buffer-name=grep-buffer -no-quit -auto-preview<CR>
+    nnoremap <silent> ,gi  :Unite grep:.:-i:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+    nnoremap <silent> ,gw  :Unite grep:.:-w:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+
+    " --------------------------------------------------
+    " unite
+    " --------------------------------------------------
+    " 入力モードで開始
+    let g:unite_enable_start_insert=1
+    " バッファ一覧
+    noremap <C-P> :Unite buffer<CR>
+    " ファイル一覧
+    noremap <C-N> :Unite -buffer-name=file file<CR>
+    " 最近使ったファイルの一覧
+    noremap <C-Z> :Unite file_mru<CR>
+    " ウィンドウを分割して開く
+    au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+    au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+    " ウィンドウを縦に分割して開く
+    au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+    au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+    " ESCキーを2回押すと終了する
+    au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+    au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+    " 初期設定関数を起動する
+    au FileType unite call s:unite_my_settings()
+    function! s:unite_my_settings()
+        " Overwrite settings.
+    endfunction
+    " 前回のバッファを開く
+    nnoremap <silent> ,ur :UniteResume<CR>
+
     " --------------------------------------------------
     " neocomplete
     " --------------------------------------------------
