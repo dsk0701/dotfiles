@@ -1,9 +1,10 @@
---langdef=Swift 
---langmap=Swift:+.swift 
---regex-swift=/(var|let)[ \t]+([^:=]+).*$/\2/,variable/ 
---regex-swift=/func[ \t]+([^\(\)]+)\([^\(\)]*\)/\1/,function/ 
---regex-swift=/class[ \t]+([^:\{]+).*$/\1/,class/ 
---regex-swift=/struct[ \t]+([^:\{]+).*$/\1/,struct/ 
---regex-swift=/protocol[ \t]+([^:\{]+).*$/\1/,protocol/
---regex-swift=/enum[ \t]+([^:\{]+).*$/\1/,enum/
+--langdef=swift
+--langmap=swift:.swift
+--regex-swift=/[[:<:]]class[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/c,class/
+--regex-swift=/[[:<:]]enum[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/e,enum/
+--regex-swift=/[[:<:]]func[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/f,function/
+--regex-swift=/[[:<:]]protocol[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/P,protocol/
+--regex-swift=/[[:<:]]struct[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/s,struct/
+--regex-swift=/[[:<:]]extension[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/E,extension/
+--regex-swift=/[[:<:]]typealias[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/t,typealias/
 
