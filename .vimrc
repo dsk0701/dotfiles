@@ -135,6 +135,8 @@ if has('nvim')
     " --------------------------------------------------
     " denite
     " --------------------------------------------------
+    hi CursorLine ctermfg=magenta
+
     call denite#custom#source('file_mru', 'converters',
                 \ ['converter_relative_word'])
 
@@ -146,25 +148,26 @@ if has('nvim')
     call denite#custom#var('grep', 'default_opts',
                 \ ['--vimgrep', '--no-heading'])
 
-    " grep key mappings.
+    " Change mappings.
     call denite#custom#map('_', "\<C-n>", 'move_to_next_line')
     call denite#custom#map('_', "\<C-p>", 'move_to_prev_line')
 
-    nnoremap <silent> ,g  :Denite grep -buffer-name=grep-buffer -no-quit<CR>
-    nnoremap <silent> ,ga :Denite grep -buffer-name=grep-buffer -no-quit -auto-preview<CR>
-    nnoremap <silent> ,gi  :Denite grep:.:-i:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-    nnoremap <silent> ,gw  :Denite grep:.:-w:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+    nnoremap <silent> ,dg  :Denite grep -buffer-name=grep-buffer -no-quit<CR><C-R><C-W>
+    nnoremap <silent> ,dga :Denite grep -buffer-name=grep-buffer -no-quit -auto-preview<CR>
+
+    " 前回のGrep結果を開く
+    nnoremap <silent> ,dr :Denite -resume -buffer-name=grep-buffer<CR>
 
     " ファイル一覧
     noremap <C-N> :Denite file_rec<CR>
     " 最近使ったファイルの一覧
-    noremap <C-M> :Denite file_mru<CR>
+    noremap <C-L> :Denite file_mru<CR>
 
     " --------------------------------------------------
     " deoplete
     " --------------------------------------------------
     let g:deoplete#enable_at_startup = 1
-    let g:deoplete#sources#swift#daemon_autostart = 1
+    " let g:deoplete#sources#swift#daemon_autostart = 0
 
     " Use smartcase.
     let g:deoplete#enable_smart_case = 1
@@ -181,6 +184,7 @@ if has('nvim')
     function! s:my_cr_function() abort
         return pumvisible() ? deoplete#close_popup() : "\<CR>"
     endfunction
+
 else
     " --------------------------------------------------
     " unite-grep
@@ -208,7 +212,7 @@ else
     " ファイル一覧
     noremap <C-N> :Unite -buffer-name=file file<CR>
     " 最近使ったファイルの一覧
-    noremap <C-Z> :Unite file_mru<CR>
+    noremap <C-L> :Unite file_mru<CR>
     " ウィンドウを分割して開く
     au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
     au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
