@@ -5,6 +5,9 @@
     name = dsk0701
     email = d.dubandtribal@gmail.com
 
+    # name = dsk
+    # email = daisuke.shiraishi@mixin.tech
+
 [core]
     excludesfile = ~/.gitignore
     autocrlf = false
