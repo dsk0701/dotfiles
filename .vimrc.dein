@@ -9,6 +9,7 @@ set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state(expand('~/.vim/dein'))
   call dein#begin(expand('~/.vim/dein'))
   call dein#add('Shougo/dein.vim')
+
   " Add or remove your plugins here:
   call dein#add('Shougo/denite.nvim')
   call dein#add('Shougo/neomru.vim')
