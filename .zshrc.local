@@ -1,6 +1,9 @@
 # git ssl settings.
 export GIT_SSL_NO_VERIFY=true
 
+# git diff-highlight
+export PATH=/usr/local/share/git-core/contrib/diff-highlight:$PATH
+
 # Go language
 if [ -x "`which go`" ]; then
       export GOROOT=`go env GOROOT`
@@ -45,6 +48,8 @@ export ANT_ROOT=/usr/local/bin
 
 # zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
+autoload -U compinit
+compinit -u
 
 # rbenv
 which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"

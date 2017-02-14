@@ -6,6 +6,7 @@ endif
 " Required:
 set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
+" Required:
 if dein#load_state(expand('~/.vim/dein'))
   call dein#begin(expand('~/.vim/dein'))
   call dein#add('Shougo/dein.vim')
@@ -60,10 +61,13 @@ if dein#load_state(expand('~/.vim/dein'))
   " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
   call dein#add('Shougo/vimshell')
 
+  " Required:
   call dein#end()
   call dein#save_state()
 endif
 
+" Required:
 filetype plugin indent on
 syntax enable
+
 "End dein Scripts-------------------------
