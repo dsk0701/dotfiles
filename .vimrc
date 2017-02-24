@@ -25,8 +25,6 @@ set scrolloff=0
 " テーマ.
 " colorscheme koehler
 colorscheme molokai
-" molokai の Search だけ見難いので変更
-au Colorscheme * highlight Search term=reverse cterm=reverse gui=reverse guifg=#455354 guibg=fg
 
 " 行番号表示.
 set number
