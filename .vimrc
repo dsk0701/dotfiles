@@ -384,6 +384,11 @@ au FileType ruby setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
 au FileType yaml setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " --------------------------------------------------
+" Dockerfile
+" --------------------------------------------------
+au FileType dockerfile setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
+" --------------------------------------------------
 " neosnippet
 " --------------------------------------------------
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
