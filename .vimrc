@@ -161,11 +161,13 @@ if has('nvim')
     call denite#custom#source('file_mru', 'converters',
                 \ ['converter_relative_word'])
 
-    nnoremap <silent> ,dg  :Denite grep -buffer-name=grep-buffer -no-quit<CR><C-R><C-W>
-    nnoremap <silent> ,dga :Denite grep -buffer-name=grep-buffer -no-quit -auto-preview<CR>
+    nnoremap <silent> ,g  :Denite grep -buffer-name=grep-buffer -no-quit<CR><C-R><C-W>
+    nnoremap <silent> ,ga :Denite grep -buffer-name=grep-buffer -no-quit -auto-preview<CR>
+    nnoremap <silent> ,n :Denite -resume -buffer-name=grep-buffer -select=+1 -immediately<CR>
+    nnoremap <silent> ,p :Denite -resume -buffer-name=grep-buffer -select=-1 -immediately<CR>
 
     " 前回のGrep結果を開く
-    nnoremap <silent> ,dr :Denite -resume -buffer-name=grep-buffer<CR>
+    nnoremap <silent> ,gr :Denite -resume -buffer-name=grep-buffer<CR>
 
     " ファイル一覧
     noremap <C-N> :Denite file_rec<CR>
@@ -387,6 +389,11 @@ au FileType yaml setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " Dockerfile
 " --------------------------------------------------
 au FileType dockerfile setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
+" --------------------------------------------------
+" Json
+" --------------------------------------------------
+au FileType json setl expandtab tabstop=2 shiftwidth=2 softtabstop=2 conceallevel=0
 
 " --------------------------------------------------
 " neosnippet

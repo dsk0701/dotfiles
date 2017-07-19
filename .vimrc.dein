@@ -23,6 +23,7 @@ if dein#load_state(expand('~/.vim/dein'))
   call dein#add('landaire/deoplete-swift') " Need SourceKitten.
   call dein#add('mitsuse/autocomplete-swift') " Need SourceKittenDaemon.
   call dein#add('keith/swift.vim')
+  call dein#add('udalov/kotlin-vim')
   call dein#add('violetyk/neocomplete-php.vim')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
