@@ -381,6 +381,11 @@ endif
 au FileType ruby setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " --------------------------------------------------
+" Javascript
+" --------------------------------------------------
+au FileType javascript setl expandtab tabstop=4 shiftwidth=4 softtabstop=4
+
+" --------------------------------------------------
 " Yaml
 " --------------------------------------------------
 au FileType yaml setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
