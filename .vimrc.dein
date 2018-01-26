@@ -57,6 +57,9 @@ if dein#load_state(expand('~/.vim/dein'))
   " Xcode
   call dein#add('tokorom/xcode-actions.vim')
 
+  " Android Studio
+  call dein#add('dsk0701/android-studio-actions.vim')
+
   " WakaTime
   " call dein#add('wakatime/vim-wakatime')
 
