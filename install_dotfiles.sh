@@ -2,7 +2,7 @@
 
 cd $(dirname $0)
 
-back_up_dirs=".vim .tmux .config"
+back_up_dirs=".vim .tmux .config .ctags.d"
 
 for dir in $back_up_dirs
 do
