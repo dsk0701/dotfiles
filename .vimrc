@@ -560,10 +560,10 @@ if has('mac')
     autocmd FileType objc,swift,c,cpp nmap ,o <Plug>(xcode-actions-openfile)
 
     " android-studio-actions.vim
-    autocmd FileType java,kotlin nmap ,t <Plug>(android-studio-actions-run)
-    autocmd FileType java,kotlin nmap ,r <Plug>(android-studio-actions-debug)
-    autocmd FileType java,kotlin nmap ,b <Plug>(android-studio-actions-rebuild)
-    autocmd FileType java,kotlin nmap ,o <Plug>(android-studio-actions-openfile)
+    autocmd FileType java,kotlin,xml nmap ,t <Plug>(android-studio-actions-run)
+    autocmd FileType java,kotlin,xml nmap ,r <Plug>(android-studio-actions-debug)
+    autocmd FileType java,kotlin,xml nmap ,b <Plug>(android-studio-actions-rebuild)
+    autocmd FileType java,kotlin,xml nmap ,o <Plug>(android-studio-actions-openfile)
 
 " windows.
 elseif has('win32')
