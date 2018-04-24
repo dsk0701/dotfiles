@@ -59,3 +59,6 @@ which pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
 
 # nodenv
 which nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
+
+# jenv
+which jenv > /dev/null 2>&1 && eval "$(jenv init -)"
