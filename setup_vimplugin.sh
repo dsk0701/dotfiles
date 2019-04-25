@@ -15,15 +15,6 @@ ErrorCheck git submodule init
 ErrorCheck git submodule update
 
 # -------------------------
-# neobundle
-# -------------------------
-BUNDLE_DIR=~/.vim/bundle
-if [ ! -e "${BUNDLE_DIR}/neobundle.vim" ]; then
-    mkdir -p ${BUNDLE_DIR}
-    ErrorCheck git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-fi
-
-# -------------------------
 # dein.vim
 # -------------------------
 DEIN_DIR=~/.vim/dein

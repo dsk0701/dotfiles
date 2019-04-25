@@ -4,9 +4,6 @@
 " dein
 :source ~/.vimrc.dein
 
-" vundle設定を読み込む
-" :source ~/.vimrc.neobundle
-
 " 色を付ける.
 syntax on
 
