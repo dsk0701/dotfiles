@@ -5,8 +5,11 @@
     name = dsk0701
     email = d.dubandtribal@gmail.com
 
-    # name = developer
-    # email = developer@mixin.tech
+[includeIf "gitdir:~/var/mixin/"]
+    path = ~/.gitconfig-mixin
+
+[includeIf "gitdir:~/var/dev/"]
+    path = ~/.gitconfig-dev
 
 [core]
     excludesfile = ~/.gitignore
