@@ -277,6 +277,10 @@ alias java='java -Dfile.encoding=UTF-8'
 # mac
 case "${OSTYPE}" in
     freebsd*|darwin*)
+        # homebrew のパスに*-configがあると正常に動かないかもしれないというbrew doctorのwarning対策
+        # https://qiita.com/tsukapah/items/40462aa2311ce6269571
+        alias brew="env PATH=${PATH/\/Users\/${USER}\/\.pyenv\/shims:/} brew"
+
         # override colors for ls.
         alias ls="ls -G -w"
 
