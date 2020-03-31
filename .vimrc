@@ -125,228 +125,71 @@ cnoremap <expr> /  getcmdtype() == '/' ? '\/' : '/'
 " --------------------------------------------------
 let g:vimfiler_as_default_explorer = 1
 
-if has('nvim')
+" --------------------------------------------------
+" denite
+" --------------------------------------------------
+hi CursorLine ctermfg=magenta
 
-    " --------------------------------------------------
-    " denite
-    " --------------------------------------------------
-    hi CursorLine ctermfg=magenta
+" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+                \ denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> d
+                \ denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> p
+                \ denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q
+                \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i
+                \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space>
+                \ denite#do_map('toggle_select').'j'
+endfunction
 
-    " Change mappings.
-    call denite#custom#map(
-                \ 'insert',
-                \ '<C-n>',
-                \ '<denite:move_to_next_line>',
-                \ 'noremap'
-                \)
-    call denite#custom#map(
-                \ 'insert',
-                \ '<C-p>',
-                \ '<denite:move_to_previous_line>',
-                \ 'noremap'
-                \)
+" ファイル一覧
+noremap <C-N> :Denite file/rec<CR>
+" 最近使ったファイルの一覧
+noremap <C-L> :Denite file_mru<CR>
 
-    " Ripgrep command on grep source
-    call denite#custom#var('grep', 'command', ['rg'])
-    call denite#custom#var('grep', 'default_opts',
-                \ ['--vimgrep', '--no-heading'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
+" Ripgrep command on grep source
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+    \ ['-i', '--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
 
-    call denite#custom#source('file_mru', 'converters',
-                \ ['converter_relative_word'])
+" nnoremap <silent> ,gw  :Unite grep:.:-w:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
+nnoremap <silent> ,g  :Denite grep -buffer-name=grep-buffer <CR><C-R><C-W>
+nnoremap <silent> ,gw  :Denite grep:.:-w:`expand('<cword>')` -buffer-name=grep-buffer <CR>
+nnoremap <silent> ,n :Denite -resume -buffer-name=grep-buffer -cursor-pos=+1 -immediately<CR>
+nnoremap <silent> ,p :Denite -resume -buffer-name=grep-buffer -cursor-pos=-1 -immediately<CR>
+" 前回のGrep結果を開く
+nnoremap <silent> ,gr :Denite -resume -buffer-name=grep-buffer<CR>
 
-    nnoremap <silent> ,g  :Denite grep -buffer-name=grep-buffer -no-quit<CR><C-R><C-W>
-    nnoremap <silent> ,ga :Denite grep -buffer-name=grep-buffer -no-quit -auto-preview<CR>
-    nnoremap <silent> ,n :Denite -resume -buffer-name=grep-buffer -select=+1 -immediately<CR>
-    nnoremap <silent> ,p :Denite -resume -buffer-name=grep-buffer -select=-1 -immediately<CR>
+" --------------------------------------------------
+" deoplete
+" --------------------------------------------------
+let g:deoplete#enable_at_startup = 1
+" let g:deoplete#sources#swift#daemon_autostart = 0
 
-    " 前回のGrep結果を開く
-    nnoremap <silent> ,gr :Denite -resume -buffer-name=grep-buffer<CR>
+" Use smartcase.
+let g:deoplete#enable_smart_case = 1
 
-    " ファイル一覧
-    noremap <C-N> :Denite file_rec<CR>
-    " 最近使ったファイルの一覧
-    noremap <C-L> :Denite file_mru<CR>
+" 一番上の候補を選択状態にする
+set completeopt+=noinsert
 
-    " --------------------------------------------------
-    " deoplete
-    " --------------------------------------------------
-    let g:deoplete#enable_at_startup = 1
-    " let g:deoplete#sources#swift#daemon_autostart = 0
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
-    " Use smartcase.
-    let g:deoplete#enable_smart_case = 1
-
-    " 一番上の候補を選択状態にする
-    set completeopt+=noinsert
-
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-
-    " <CR>: close popup and save indent.
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function() abort
-        return pumvisible() ? deoplete#close_popup() : "\<CR>"
-    endfunction
-
-else
-    " --------------------------------------------------
-    " unite-grep
-    " --------------------------------------------------
-    " grep のバックエンドを ag にする.
-    if executable('ag')
-        let g:unite_source_grep_command = 'ag'
-        let g:unite_source_grep_default_opts = '--nocolor --nogroup'
-        let g:unite_source_grep_recursive_opt = ''
-    endif
-
-    " key-mappings.
-    nnoremap <silent> ,g  :Unite grep -buffer-name=grep-buffer -no-quit<CR>
-    nnoremap <silent> ,ga :Unite grep -buffer-name=grep-buffer -no-quit -auto-preview<CR>
-    nnoremap <silent> ,gi  :Unite grep:.:-i:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-    nnoremap <silent> ,gw  :Unite grep:.:-w:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-
-    " --------------------------------------------------
-    " unite
-    " --------------------------------------------------
-    " 入力モードで開始
-    let g:unite_enable_start_insert=1
-    " バッファ一覧
-    noremap <C-P> :Unite buffer<CR>
-    " ファイル一覧
-    noremap <C-N> :Unite -buffer-name=file file<CR>
-    " 最近使ったファイルの一覧
-    noremap <C-L> :Unite file_mru<CR>
-    " ウィンドウを分割して開く
-    au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-    au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-    " ウィンドウを縦に分割して開く
-    au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-    au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-    " ESCキーを2回押すと終了する
-    au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-    au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-    " 初期設定関数を起動する
-    au FileType unite call s:unite_my_settings()
-    function! s:unite_my_settings()
-        " Overwrite settings.
-    endfunction
-    " 前回のバッファを開く
-    nnoremap <silent> ,ur :UniteResume<CR>
-
-    " --------------------------------------------------
-    " neocomplete
-    " --------------------------------------------------
-    "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-    " Disable AutoComplPop.
-    let g:acp_enableAtStartup = 0
-    " Use neocomplete.
-    let g:neocomplete#enable_at_startup = 1
-    " Use smartcase.
-    let g:neocomplete#enable_smart_case = 1
-    " Set minimum syntax keyword length.
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
-    let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-    " Define dictionary.
-    let g:neocomplete#sources#dictionary#dictionaries = {
-                \ 'default' : '',
-                \ 'vimshell' : $HOME.'/.vimshell_hist',
-                \ 'scheme' : $HOME.'/.gosh_completions',
-                \ 'scala' : $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
-                \ 'java' : $HOME.'/.vim/dict/java.dict',
-                \ 'c' : $HOME.'/.vim/dict/c.dict',
-                \ 'cpp' : $HOME.'/.vim/dict/cpp.dict',
-                \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
-                \ 'ocaml' : $HOME.'/.vim/dict/ocaml.dict',
-                \ 'perl' : $HOME.'/.vim/dict/perl.dict',
-                \ 'php' : $HOME.'/.vim/dict/php.dict',
-                \ 'vm' : $HOME.'/.vim/dict/vim.dict'
-                \ }
-
-    " Define keyword.
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-    " Plugin key-mappings.
-    inoremap <expr><C-g>     neocomplete#undo_completion()
-    inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-    " Recommended key-mappings.
-    " <CR>: close popup and save indent.
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-        " return neocomplete#close_popup() . "\<CR>"
-        " For no inserting <CR> key.
-        return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-    endfunction
-    " <TAB>: completion.
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><C-y>  neocomplete#close_popup()
-    inoremap <expr><C-e>  neocomplete#cancel_popup()
-    " Close popup by <Space>.
-    "inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-    " For cursor moving in insert mode(Not recommended)
-    "inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-    "inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-    "inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-    "inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-    " Or set this.
-    "let g:neocomplete#enable_cursor_hold_i = 1
-    " Or set this.
-    "let g:neocomplete#enable_insert_char_pre = 1
-
-    " AutoComplPop like behavior.
-    let g:neocomplete#enable_auto_select = 1
-
-    " Shell like behavior(not recommended).
-    "set completeopt+=longest
-    "let g:neocomplete#enable_auto_select = 1
-    "let g:neocomplete#disable_auto_complete = 1
-    "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-    " Enable omni completion.
-    autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
-    autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
-    autocmd FileType c          setlocal omnifunc=ccomplete#Complete
-    autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
-
-    " Enable heavy omni completion.
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    let g:neocomplete#sources#omni#input_patterns.php =
-                \ '[^. \t]->\h\w*\|\h\w*::'
-    let g:neocomplete#sources#omni#input_patterns.c =
-                \ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
-    let g:neocomplete#sources#omni#input_patterns.cpp =
-                \ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-
-    " For perlomni.vim setting.
-    " https://github.com/c9s/perlomni.vim
-    let g:neocomplete#sources#omni#input_patterns.perl =
-                \ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-
-    " neocomplete swift dictionary.
-    let g:swift_dict_with_neocomplete = 0
-
-    " 辞書補完の設定
-    set complete+=k
-endif
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+    return pumvisible() ? deoplete#close_popup() : "\<CR>"
+endfunction
 
 " --------------------------------------------------
 " php
