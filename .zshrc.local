@@ -26,6 +26,15 @@ fi
 # python powerline.
 export PATH=~/Library/Python/2.7/bin:$PATH
 
+# HomebrewのOpensslを使うように
+# brew link openssl --forceすると警告が出てパスを通せなくなったのでコマンドやライブラリなどにパスを通す
+# Warning: Refusing to link macOS-provided software: openssl@1.1
+export PATH=/usr/local/opt/openssl@1.1/bin:$PATH
+# For compilers to find openssl@1.1 you may need to set:
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+# For pkg-config to find openssl@1.1 you may need to set:
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
 # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/.rvm/bin
