@@ -14,6 +14,7 @@
 [core]
     excludesfile = ~/.gitignore
     autocrlf = false
+    ignorecase = false
 
 [difftool "sourcetree"]
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
