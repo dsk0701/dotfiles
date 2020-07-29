@@ -176,7 +176,7 @@ let g:deoplete#enable_at_startup = 1
 " let g:deoplete#sources#swift#daemon_autostart = 0
 
 " Use smartcase.
-let g:deoplete#enable_smart_case = 1
+call deoplete#custom#option('smart_case', v:true)
 
 " 一番上の候補を選択状態にする
 set completeopt+=noinsert
