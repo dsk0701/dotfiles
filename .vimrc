@@ -26,8 +26,8 @@ colorscheme molokai
 " 行番号表示.
 set number
 
-" 検索時に大文字小文字を無視.
-set ignorecase
+" パターンに大文字が含まれているときに限り、大文字と小文字が区別されるように
+set ignorecase smartcase
 
 " タブ幅.
 set tabstop=4
