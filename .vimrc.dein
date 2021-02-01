@@ -1,44 +1,36 @@
-"dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
 endif
 
 " Required:
-set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state(expand('~/.vim/dein'))
-  call dein#begin(expand('~/.vim/dein'))
-  call dein#add('Shougo/dein.vim')
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-  " Add or remove your plugins here:
-  call dein#add('Shougo/denite.nvim')
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
+
+  " Add or remove your plugins here:
+  call dein#add('Shougo/denite.nvim')
   call dein#add('Shougo/neomru.vim')
   call dein#add('Shougo/vimfiler.vim')
   call dein#add('Shougo/unite.vim') " depend from vimfiler.
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-  call dein#add('Shougo/neocomplete.vim')
-  call dein#add('Shougo/deoplete.nvim')
   call dein#add('tokorom/swift-dict.vim')
   call dein#add('keith/swift.vim')
   call dein#add('udalov/kotlin-vim')
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
   call dein#add('houtsnip/vim-emacscommandline.git')
-  call dein#add('derekwyatt/vim-scala.git')
   call dein#add('tomasr/molokai.git')
-  call dein#add('rcmdnk/vim-markdown.git')
   call dein#add('kannokanno/previm.git')
-  call dein#add('thinca/vim-quickrun.git')
-  call dein#add('osyo-manga/shabadou.vim')
-  call dein#add('dannyob/quickfixstatus')
-  call dein#add('mattn/webapi-vim')
   call dein#add('tyru/open-browser.vim')
-  call dein#add('superbrothers/vim-quickrun-markdown-gfm')
   call dein#add('tpope/vim-surround.git')
   call dein#add('tpope/vim-endwise.git')
   call dein#add('vim-ruby/vim-ruby.git')
@@ -46,12 +38,10 @@ if dein#load_state(expand('~/.vim/dein'))
   call dein#add('vim-scripts/matrix.vim--Yang.git')
   call dein#add('vim-scripts/sudo.vim')
   call dein#add('vim-scripts/taglist.vim')
-  call dein#add('vim-scripts/groovyindent-unix')
   call dein#add('itchyny/lightline.vim')
   call dein#add('ekalinin/Dockerfile.vim')
 
   " Swift completion
-  call dein#add('prabirshrestha/async.vim')
   call dein#add('prabirshrestha/vim-lsp')
   call dein#add('mattn/vim-lsp-settings')
   call dein#add('lighttiger2505/deoplete-vim-lsp')
@@ -66,9 +56,6 @@ if dein#load_state(expand('~/.vim/dein'))
   " Android Studio
   call dein#add('dsk0701/android-studio-actions.vim')
 
-  " WakaTime
-  " call dein#add('wakatime/vim-wakatime')
-
   " Required:
   call dein#end()
   call dein#save_state()
@@ -77,5 +64,10 @@ endif
 " Required:
 filetype plugin indent on
 syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
 
 "End dein Scripts-------------------------

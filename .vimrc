@@ -192,30 +192,6 @@ function! s:my_cr_function() abort
 endfunction
 
 " --------------------------------------------------
-" php
-" --------------------------------------------------
-let g:neocomplete_php_locale = 'ja'
-
-set iskeyword+=$
-
-if !exists("g:quickrun_config")
-    let g:quickrun_config = {}
-endif
-" let g:quickrun_config["watchdogs_checker/_"] = {
-"       \ "outputter/quickfix/open_cmd" : "",
-"       \ "hook/close_quickfix/enable_exit" : 1,
-"       \ }
-" 
-" " 書き込み後にシンタックスチェックを行う
-" let g:watchdogs_check_BufWritePost_enable = 1
-" 
-" " 一定時間キー入力がなかった場合にシンタックスチェックを行う
-" " バッファに書き込み後、1度だけ行われる
-" let g:watchdogs_check_CursorHold_enable = 1
-" 
-" call watchdogs#setup(g:quickrun_config)
-
-" --------------------------------------------------
 " ruby
 " --------------------------------------------------
 au FileType ruby setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
@@ -239,27 +215,6 @@ au FileType dockerfile setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " Json
 " --------------------------------------------------
 au FileType json setl expandtab tabstop=2 shiftwidth=2 softtabstop=2 conceallevel=0
-
-" --------------------------------------------------
-" neosnippet
-" --------------------------------------------------
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
 
 " --------------------------------------------------
 " vim-emacscommandline
@@ -341,21 +296,6 @@ endfunction
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 
-
-" --------------------------------------------------
-" vim-markdown
-" --------------------------------------------------
-let g:vim_markdown_initial_foldlevel=3
-
-" --------------------------------------------------
-" vim-quickrun-markdown-gfm (GitHub flavor markdown)
-" --------------------------------------------------
-let g:quickrun_config = {
-\   'markdown': {
-\     'type': 'markdown/gfm',
-\     'outputter': 'browser'
-\   }
-\ }
 
 " --------------------------------------------------
 " previm
