@@ -192,6 +192,18 @@ function! s:my_cr_function() abort
 endfunction
 
 " --------------------------------------------------
+" Swift completion
+" --------------------------------------------------
+" let g:lsp_signature_help_enabled = 1
+" let g:lsp_diagnostics_enabled = 1
+" let g:lsp_diagnostics_echo_cursor = 1
+" Xcode、Toolchainどちらsourcekit-lspでもimport UIKitでno such module 'UIKit'エラー
+" let g:lsp_settings = {
+" \  'sourcekit-lsp': {'cmd': ['xcrun', 'sourcekit-lsp']}
+" \  'sourcekit-lsp': {'cmd': ['xcrun', '--toolchain', 'org.swift.533202101251a', 'sourcekit-lsp']}
+" \}
+
+" --------------------------------------------------
 " ruby
 " --------------------------------------------------
 au FileType ruby setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
