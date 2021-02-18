@@ -180,6 +180,28 @@ function! s:defx_my_settings() abort
   \ defx#do_action('change_vim_cwd')
 endfunction
 
+" netrwをdefxで置き換える
+function! s:hijack_directory() abort
+  let path = expand('%:p')
+  if !isdirectory(path)
+    return
+  endif
+  keepjumps keepalt bwipeout %
+  execute printf('keepjumps keepalt Defx %s', fnameescape(path))
+endfunction
+
+function! s:suppress_netrw() abort
+  if exists('#FileExplorer')
+    autocmd! FileExplorer *
+  endif
+endfunction
+
+augroup defx-hijack
+  autocmd!
+  autocmd VimEnter * call s:suppress_netrw()
+  autocmd BufEnter * ++nested call s:hijack_directory()
+augroup END
+
 " --------------------------------------------------
 " denite
 " --------------------------------------------------
