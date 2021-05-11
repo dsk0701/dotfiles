@@ -229,22 +229,43 @@ noremap <C-N> :Denite file/rec<CR>
 " 最近使ったファイルの一覧
 noremap <C-L> :Denite file_mru<CR>
 
-" Ripgrep command on grep source
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-    \ ['-i', '--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
+" Change file/rec command.
+" For ripgrep
+call denite#custom#var('file/rec', 'command',
+    \ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
 
-" nnoremap <silent> ,gw  :Unite grep:.:-w:<C-R><C-W> -buffer-name=grep-buffer -no-quit<CR>
-nnoremap <silent> ,g  :Denite grep -buffer-name=grep-buffer <CR><C-R><C-W>
-nnoremap <silent> ,gw  :Denite grep:.:-w:`expand('<cword>')` -buffer-name=grep-buffer <CR>
-nnoremap <silent> ,n :Denite -resume -buffer-name=grep-buffer -cursor-pos=+1 -immediately<CR>
-nnoremap <silent> ,p :Denite -resume -buffer-name=grep-buffer -cursor-pos=-1 -immediately<CR>
+" Ripgrep command on grep source
+call denite#custom#var('grep', {
+    \ 'command': ['rg'],
+    \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
+    \ 'recursive_opts': [],
+    \ 'pattern_opt': ['--regexp'],
+    \ 'separator': ['--'],
+    \ 'final_opts': [],
+    \ })
+
+nnoremap <silent> ,g  :Denite grep <CR><C-R><C-W>
+nnoremap <silent> ,gw  :Denite grep:.:-w:`expand('<cword>')` <CR>
 " 前回のGrep結果を開く
-nnoremap <silent> ,gr :Denite -resume -buffer-name=grep-buffer<CR>
+nnoremap <silent> ,gr :Denite -resume <CR>
+
+let s:floating_window_width_ratio = 1.0
+let s:floating_window_height_ratio = 0.7
+
+call denite#custom#option('default', {
+\ 'auto_action': 'preview',
+\ 'floating_preview': v:true,
+\ 'preview_height': float2nr(&lines * s:floating_window_height_ratio),
+\ 'preview_width': float2nr(&columns * s:floating_window_width_ratio / 2),
+\ 'prompt': '% ',
+\ 'split': 'floating',
+\ 'vertical_preview': v:true,
+\ 'wincol': float2nr((&columns - (&columns * s:floating_window_width_ratio)) / 2),
+\ 'winheight': float2nr(&lines * s:floating_window_height_ratio),
+\ 'winrow': float2nr((&lines - (&lines * s:floating_window_height_ratio)) / 2),
+\ 'winwidth': float2nr(&columns * s:floating_window_width_ratio / 2),
+\ })
+
 
 " --------------------------------------------------
 " deoplete
