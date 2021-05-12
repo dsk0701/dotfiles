@@ -6,63 +6,59 @@ endif
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
+call dein#begin('~/.cache/dein')
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-
-  " Add or remove your plugins here:
-  call dein#add('Shougo/denite.nvim')
-  call dein#add('Shougo/neomru.vim')
-  call dein#add('Shougo/defx.nvim')
-  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-  call dein#add('tokorom/swift-dict.vim')
-  call dein#add('keith/swift.vim')
-  call dein#add('udalov/kotlin-vim')
-  call dein#add('houtsnip/vim-emacscommandline.git')
-  call dein#add('tomasr/molokai.git')
-  call dein#add('tyru/open-browser.vim')
-  call dein#add('tpope/vim-surround.git')
-  call dein#add('tpope/vim-endwise.git')
-  call dein#add('vim-ruby/vim-ruby.git')
-  call dein#add('vim-scripts/grep.vim')
-  call dein#add('vim-scripts/matrix.vim--Yang.git')
-  call dein#add('vim-scripts/sudo.vim')
-  call dein#add('vim-scripts/taglist.vim')
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('ekalinin/Dockerfile.vim')
-
-  " Markdown
-  call dein#add('godlygeek/tabular')
-  call dein#add('plasticboy/vim-markdown')
-  call dein#add('previm/previm.git')
-
-  " Swift completion
-  " call dein#add('prabirshrestha/vim-lsp')
-  " call dein#add('mattn/vim-lsp-settings')
-  " call dein#add('lighttiger2505/deoplete-vim-lsp')
-
-  " Git
-  call dein#add('tpope/vim-fugitive.git')
-  call dein#add('cohama/agit.vim')
-
-  " Xcode
-  call dein#add('tokorom/xcode-actions.vim')
-
-  " Android Studio
-  call dein#add('dsk0701/android-studio-actions.vim')
-
-  " Required:
-  call dein#end()
-  call dein#save_state()
+" Let dein manage dein
+call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+call dein#add('Shougo/deoplete.nvim')
+if !has('nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
 endif
+
+" Add or remove your plugins here:
+call dein#add('Shougo/denite.nvim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/defx.nvim')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('tokorom/swift-dict.vim')
+call dein#add('keith/swift.vim')
+call dein#add('udalov/kotlin-vim')
+call dein#add('houtsnip/vim-emacscommandline.git')
+call dein#add('tomasr/molokai.git')
+call dein#add('tyru/open-browser.vim')
+call dein#add('tpope/vim-surround.git')
+call dein#add('tpope/vim-endwise.git')
+call dein#add('vim-ruby/vim-ruby.git')
+call dein#add('vim-scripts/grep.vim')
+call dein#add('vim-scripts/matrix.vim--Yang.git')
+call dein#add('vim-scripts/sudo.vim')
+call dein#add('vim-scripts/taglist.vim')
+call dein#add('itchyny/lightline.vim')
+call dein#add('ekalinin/Dockerfile.vim')
+
+" Markdown
+call dein#add('godlygeek/tabular')
+call dein#add('plasticboy/vim-markdown')
+call dein#add('previm/previm.git')
+
+" Swift completion
+" call dein#add('prabirshrestha/vim-lsp')
+" call dein#add('mattn/vim-lsp-settings')
+" call dein#add('lighttiger2505/deoplete-vim-lsp')
+
+" Git
+call dein#add('tpope/vim-fugitive.git')
+call dein#add('cohama/agit.vim')
+
+" Xcode
+call dein#add('tokorom/xcode-actions.vim')
+
+" Android Studio
+call dein#add('dsk0701/android-studio-actions.vim')
+
+" Required:
+call dein#end()
 
 " Required:
 filetype plugin indent on
