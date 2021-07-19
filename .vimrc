@@ -343,6 +343,12 @@ au FileType dockerfile setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
 au FileType json setl expandtab tabstop=2 shiftwidth=2 softtabstop=2 conceallevel=0
 
 " --------------------------------------------------
+" Dart
+" --------------------------------------------------
+let g:dart_style_guide = 2
+let g:dart_format_on_save = 1
+
+" --------------------------------------------------
 " vim-emacscommandline
 " --------------------------------------------------
 let g:EmacsCommandLineSearchCommandLineMap = '<M-r>'

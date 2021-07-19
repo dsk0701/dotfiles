@@ -36,6 +36,7 @@ call dein#add('vim-scripts/sudo.vim')
 call dein#add('vim-scripts/taglist.vim')
 call dein#add('itchyny/lightline.vim')
 call dein#add('ekalinin/Dockerfile.vim')
+call dein#add('dart-lang/dart-vim-plugin')
 
 " Markdown
 call dein#add('godlygeek/tabular')
