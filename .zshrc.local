@@ -11,18 +11,6 @@ if [ -x "`which go`" ]; then
       export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
 
-# android sdk.
-# export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools:$PATH
-
-# android ndk.
-# export PATH=~/bin/android-ndk-r10:$PATH
-
-# ADT eclipse.
-# export ADT_ECLIPSE_HOME=~/bin/adt-bundle-mac-x86_64-20130219/eclipse
-
-# Pure eclipse.
-# export ECLIPSE_HOME=/Applications/eclipse
-
 # python powerline.
 export PATH=~/Library/Python/2.7/bin:$PATH
 
@@ -71,3 +59,7 @@ which nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
 
 # jenv
 which jenv > /dev/null 2>&1 && eval "$(jenv init -)"
+
+# flutter
+export PATH=$PATH:~/bin/flutter/bin
+
