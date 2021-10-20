@@ -1,0 +1,107 @@
+" 色を付ける.
+syntax on
+
+" undo ファイル off.
+set noundofile
+
+" ファイルタイププラグインとインデントを有効.
+filetype plugin indent on
+
+" 256色使えるように設定.
+set t_Co=256
+
+" スクロールオフセット
+set scrolloff=0
+
+" テーマ.
+" colorscheme koehler
+colorscheme molokai
+
+" 行番号表示.
+set number
+
+" パターンに大文字が含まれているときに限り、大文字と小文字が区別されるように
+set ignorecase smartcase
+
+" タブ幅.
+set tabstop=4
+
+" シフト（>）幅.
+set shiftwidth=4
+
+" バックアップファイル.
+set nobackup
+
+" 全てのモードでマウス利用可能に.
+set mouse=a
+
+" C言語インデント設定.
+set cin
+
+" Javaの無名クラスを正しくインデントする設定.
+set cinoptions=j1
+
+" タブを半角スペースで入力.
+set et
+
+" タグファイルを辿って探す.
+set tags=./tags;
+
+" 検索時のハイライト.
+set hlsearch
+
+" 検索時のハイライトをESCキー連打で解除.
+nnoremap <Esc><Esc> :noh<Enter>
+
+" USキーボードで:と;を入れ替える.
+nnoremap ; :
+nnoremap : ;
+
+" 無名レジスタに入るデータが*レジスタにも入るようにする.
+set clipboard+=unnamed
+
+" ツールバーを非表示.
+set guioptions-=T
+
+" 検索後画面の中心に.
+" nmap n nzz
+" nmap N Nzz
+
+" ステータスラインに文字コードと改行文字の種別を表示.
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+
+" ウィンドウ移動時に外部の変更を反映する
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
+
+" 行末の空白文字、行頭のTAB文字、全角スペースをハイライト.
+" master setting.
+" highlight WhitespaceEOL term=underline ctermbg=DarkMagenta guibg=DarkMagenta
+" autocmd BufEnter *.c,*.cpp,*.h,*.rb,*.js match ErrorMsg /\(\s\|?\)\+$/
+
+highlight WhitespaceEOL term=underline ctermbg=DarkMagenta guibg=DarkMagenta
+aug highlightIdegraphicSpace
+    au!
+    au Colorscheme * highlight WhitespaceEOL term=underline ctermbg=DarkMagenta guibg=DarkMagenta
+    au BufEnter,BufRead *.swift,*.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.sh,*.bash,*.mk,Makefile let w:m1 = matchadd("WhitespaceEOL", '\s\+$')
+    au BufEnter,BufRead *.swift,*.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.sh,*.bash,*.mk,Makefile let w:m2 = matchadd("WhitespaceEOL", '^\t')
+    au BufEnter,BufRead *.swift,*.c,*.cpp,*.m,*.h,*.xml,*.java,*.rb,*.js,*.py,*.sh,*.bash,*.mk,Makefile let w:m3 = matchadd("WhitespaceEOL", '　')
+aug END
+
+" タブのキーマッピング.
+nnoremap t <Nop>
+nnoremap tc :tabnew<Enter>
+nnoremap tq :tabclose<Enter>
+nnoremap tn :tabnext<Enter>
+nnoremap tp :tabprevious<Enter>
+
+" ciy でカーソル位置の単語をヤンクした文字列で置換する.
+nnoremap <silent> ciy ciw<C-r>0<ESC>
+nnoremap <silent> cy   ce<C-r>0<ESC>
+vnoremap <silent> cy   c<C-r>0<ESC>
+
+" 検索時の '/' を自動でエスケープする.
+cnoremap <expr> /  getcmdtype() == '/' ? '\/' : '/'
+
