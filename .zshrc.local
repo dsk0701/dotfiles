@@ -52,7 +52,7 @@ compinit -u
 which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 
 # pyenv
-which pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
+which pyenv > /dev/null 2>&1 && eval "$(pyenv init --path)" && eval "$(pyenv init -)"
 
 # nodenv
 which nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
