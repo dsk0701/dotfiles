@@ -8,9 +8,6 @@
 # キー設定
 # --------------------------------------------------------------------------------
 
-# vi編集モード
-# bindkey -v
-
 # 履歴表示の後、カーソルを末尾に
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -24,9 +21,6 @@ bindkey '^[[B' history-beginning-search-forward-end  # ↓キー
 
 # Ctrl-rでインクリメンタルサーチ (*等でAnd検索可能に)
 bindkey '^R' history-incremental-pattern-search-backward
-
-# Ctrl-eで過去の最後の引数を挿入
-# bindkey '^E' insert-last-word
 
 # --------------------------------------------------------------------------------
 # 補完設定
@@ -224,14 +218,19 @@ preexec () {
 }
 
 # rbenv
-if which rbenv > /dev/null; then
-    eval "$(rbenv init -)"
-fi
+which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 
-# Visual Studio Code
-code () {
-    VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;
-}
+# pyenv
+which pyenv > /dev/null 2>&1 && eval "$(pyenv init --path)" && eval "$(pyenv init -)"
+
+# nodenv
+which nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
+
+# jenv
+which jenv > /dev/null 2>&1 && eval "$(jenv init -)"
+
+# flutter
+export PATH=$PATH:~/bin/flutter/bin
 
 # --------------------------------------------------------------------------------
 # 環境変数
@@ -277,10 +276,6 @@ alias java='java -Dfile.encoding=UTF-8'
 # mac
 case "${OSTYPE}" in
     freebsd*|darwin*)
-        # homebrew のパスに*-configがあると正常に動かないかもしれないというbrew doctorのwarning対策
-        # https://qiita.com/tsukapah/items/40462aa2311ce6269571
-        alias brew="env PATH=${PATH/\/Users\/${USER}\/\.pyenv\/shims:/} brew"
-
         # override colors for ls.
         alias ls="ls -G -w"
 
@@ -290,11 +285,31 @@ case "${OSTYPE}" in
         # ls color 設定
         export LSCOLORS=gxfxcxdxbxegedabagacad
 
-        # macports 設定
-        export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-
         # HomeBrew 設定
-        export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+        # arm64のパッケージを優先的に使用する。
+        path=(
+            /opt/homebrew/bin(N-/)
+            /usr/local/bin(N-/)
+            $path
+        )
+        if (( $+commands[sw_vers] )) && (( $+commands[arch] )); then
+            # [[ -x /usr/local/bin/brew ]] && alias brew="arch -arch x86_64 /usr/local/bin/brew"
+            alias x64='exec arch -x86_64 /bin/zsh'
+            alias a64='exec arch -arm64e /bin/zsh'
+
+            ARCH=$(uname -m)
+            if [[ $ARCH == arm64 ]]; then
+                echo "Current Architecture: $ARCH"
+                eval $(/opt/homebrew/bin/brew shellenv)
+            elif [[ $ARCH == x86_64 ]]; then
+                echo "Current Architecture: $ARCH"
+                eval $(/usr/local/bin/brew shellenv)
+            fi
+        else
+            # homebrew のパスに*-configがあると正常に動かないかもしれないというbrew doctorのwarning対策
+            # https://qiita.com/tsukapah/items/40462aa2311ce6269571
+            alias brew="env PATH=${PATH/\/Users\/${USER}\/\.pyenv\/shims:/} brew"
+        fi
 
         # macvim 設定
         MACVIM_DIR="/Applications/MacVim.app/Contents/MacOS"
@@ -306,7 +321,6 @@ case "${OSTYPE}" in
         fi
         ;;
 esac
-
 
 # local設定の読み込み
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
