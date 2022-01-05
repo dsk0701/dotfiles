@@ -1,1 +1,6 @@
 :source ~/.vimrc.basic
+
+" beep音を消す
+" set belloff=allが効かないので以下２つを設定。
+set visualbell
+set noerrorbells
