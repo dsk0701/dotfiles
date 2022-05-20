@@ -217,21 +217,6 @@ preexec () {
   [ ${STY} ] && echo -ne "\ek${1%% *}\e\\"
 }
 
-# rbenv
-which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
-
-# pyenv
-which pyenv > /dev/null 2>&1 && eval "$(pyenv init --path)" && eval "$(pyenv init -)"
-
-# nodenv
-which nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
-
-# jenv
-which jenv > /dev/null 2>&1 && eval "$(jenv init -)"
-
-# flutter
-export PATH=$PATH:~/bin/flutter/bin
-
 # --------------------------------------------------------------------------------
 # 環境変数
 # --------------------------------------------------------------------------------
@@ -321,6 +306,21 @@ case "${OSTYPE}" in
         fi
         ;;
 esac
+
+# rbenv
+which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
+
+# pyenv
+which pyenv > /dev/null 2>&1 && eval "$(pyenv init --path)" && eval "$(pyenv init -)"
+
+# nodenv
+which nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
+
+# jenv
+which jenv > /dev/null 2>&1 && eval "$(jenv init -)"
+
+# flutter
+export PATH=$PATH:~/bin/flutter/bin
 
 # local設定の読み込み
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
