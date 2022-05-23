@@ -27,8 +27,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 # --------------------------------------------------------------------------------
 
 # 標準の補完設定
-autoload -U compinit
-compinit
+autoload -Uz compinit && compinit
 
 # cache
 zstyle ':completion::complete:*' use-cache 1
