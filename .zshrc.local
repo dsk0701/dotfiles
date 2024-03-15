@@ -37,3 +37,9 @@ export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export PATH=$ANDROID_SDK_ROOT:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
+# Dart
+export PATH=$PATH:$HOME/.pub-cache/bin
+
+# GitHub CLI
+eval "$(gh completion -s zsh)"
+

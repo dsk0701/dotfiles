@@ -318,8 +318,5 @@ which nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
 # jenv
 which jenv > /dev/null 2>&1 && eval "$(jenv init -)"
 
-# flutter
-export PATH=$PATH:~/bin/flutter/bin
-
 # local設定の読み込み
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
