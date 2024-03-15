@@ -8,160 +8,187 @@
 :source ~/.vimrc.basic
 
 " --------------------------------------------------
-" defx
+" ddu
+" ddu-ui-ff
 " --------------------------------------------------
-autocmd FileType defx call s:defx_my_settings()
-function! s:defx_my_settings() abort
-  " Define mappings
-  nnoremap <silent><buffer><expr> <CR>
-  \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> c
-  \ defx#do_action('copy')
-  nnoremap <silent><buffer><expr> m
-  \ defx#do_action('move')
-  nnoremap <silent><buffer><expr> p
-  \ defx#do_action('paste')
-  nnoremap <silent><buffer><expr> l
-  \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> E
-  \ defx#do_action('open', 'vsplit')
-  nnoremap <silent><buffer><expr> P
-  \ defx#do_action('preview')
-  nnoremap <silent><buffer><expr> o
-  \ defx#do_action('open_tree', 'toggle')
-  nnoremap <silent><buffer><expr> K
-  \ defx#do_action('new_directory')
-  nnoremap <silent><buffer><expr> N
-  \ defx#do_action('new_file')
-  nnoremap <silent><buffer><expr> M
-  \ defx#do_action('new_multiple_files')
-  nnoremap <silent><buffer><expr> C
-  \ defx#do_action('toggle_columns',
-  \                'mark:indent:icon:filename:type:size:time')
-  nnoremap <silent><buffer><expr> S
-  \ defx#do_action('toggle_sort', 'time')
-  nnoremap <silent><buffer><expr> d
-  \ defx#do_action('remove')
-  nnoremap <silent><buffer><expr> r
-  \ defx#do_action('rename')
-  nnoremap <silent><buffer><expr> !
-  \ defx#do_action('execute_command')
-  nnoremap <silent><buffer><expr> x
-  \ defx#do_action('execute_system')
-  nnoremap <silent><buffer><expr> yy
-  \ defx#do_action('yank_path')
-  nnoremap <silent><buffer><expr> .
-  \ defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr> ;
-  \ defx#do_action('repeat')
-  nnoremap <silent><buffer><expr> h
-  \ defx#do_action('cd', ['..'])
-  nnoremap <silent><buffer><expr> ~
-  \ defx#do_action('cd')
-  nnoremap <silent><buffer><expr> q
-  \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> <Space>
-  \ defx#do_action('toggle_select') . 'j'
-  nnoremap <silent><buffer><expr> *
-  \ defx#do_action('toggle_select_all')
-  nnoremap <silent><buffer><expr> j
-  \ line('.') == line('$') ? 'gg' : 'j'
-  nnoremap <silent><buffer><expr> k
-  \ line('.') == 1 ? 'G' : 'k'
-  nnoremap <silent><buffer><expr> <C-l>
-  \ defx#do_action('redraw')
-  nnoremap <silent><buffer><expr> <C-g>
-  \ defx#do_action('print')
-  nnoremap <silent><buffer><expr> cd
-  \ defx#do_action('change_vim_cwd')
-endfunction
-
-" netrwをdefxで置き換える
-function! s:hijack_directory() abort
-  let path = expand('%:p')
-  if !isdirectory(path)
-    return
-  endif
-  keepjumps keepalt bwipeout %
-  execute printf('keepjumps keepalt Defx %s', fnameescape(path))
-endfunction
-
-function! s:suppress_netrw() abort
-  if exists('#FileExplorer')
-    autocmd! FileExplorer *
-  endif
-endfunction
-
-augroup defx-hijack
-  autocmd!
-  autocmd VimEnter * call s:suppress_netrw()
-  autocmd BufEnter * ++nested call s:hijack_directory()
-augroup END
-
-" --------------------------------------------------
-" denite
-" --------------------------------------------------
-hi CursorLine ctermfg=magenta
-
-" Define mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR>
-                \ denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d
-                \ denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> p
-                \ denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> q
-                \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i
-                \ denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space>
-                \ denite#do_map('toggle_select').'j'
-endfunction
-
-" ファイル一覧
-noremap <C-N> :Denite file/rec<CR>
-" 最近使ったファイルの一覧
-noremap <C-L> :Denite file_mru<CR>
-
-" Change file/rec command.
-" For ripgrep
-call denite#custom#var('file/rec', 'command',
-    \ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
-
-" Ripgrep command on grep source
-call denite#custom#var('grep', {
-    \ 'command': ['rg'],
-    \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
-    \ 'recursive_opts': [],
-    \ 'pattern_opt': ['--regexp'],
-    \ 'separator': ['--'],
-    \ 'final_opts': [],
+call ddu#custom#patch_global(#{
+    \   ui: 'ff',
+    \   sources: [
+    \     #{
+    \         name: 'file_rec',
+    \         params: #{
+    \           ignoredDirectories: ['.git', 'vendor', 'build'],
+    \         },
+    \     },
+    \   ],
+    \   sourceOptions: #{
+    \     _: #{
+    \       matchers: ['matcher_substring'],
+    \     },
+    \   },
+    \   filterParams: #{
+    \     matcher_substring: #{
+    \       highlightMatched: 'Search',
+    \     },
+    \   },
+    \   kindOptions: #{
+    \     file: #{
+    \       defaultAction: 'open',
+    \     },
+    \   },
+    \   uiParams: #{
+    \     ff: #{
+    \       split: 'floating',
+    \       startFilter: v:true,
+    \       prompt: '> ',
+    \     }
+    \   },
+    \   actionOptions: #{
+    \     narrow: #{
+    \       quit: v:false,
+    \     },
+    \   },
     \ })
 
-nnoremap <silent> ,g  :Denite grep <CR><C-R><C-W>
-nnoremap <silent> ,gw  :Denite grep:.:-w:`expand('<cword>')` <CR>
-" 前回のGrep結果を開く
-nnoremap <silent> ,gr :Denite -resume <CR>
+" --------------------------------------------------
+" ddu-ui-ff
+" --------------------------------------------------
+autocmd FileType ddu-ff call s:ddu_ff_my_settings()
+function s:ddu_ff_my_settings() abort
+  nnoremap <buffer> <CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open'})<CR>
+  nnoremap <buffer> v
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'vsplit'}})<CR>
+  nnoremap <buffer> V
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'botright vsplit'}})<CR>
+  nnoremap <buffer> i
+  \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
+  nnoremap <buffer> p
+  \ <Cmd>call ddu#ui#do_action('preview')<CR>
+  nnoremap <buffer> q
+  \ <Cmd>call ddu#ui#do_action('quit')<CR>
+endfunction
 
-let s:floating_window_width_ratio = 1.0
-let s:floating_window_height_ratio = 0.7
+autocmd FileType ddu-ff-filter call s:ddu_ff_filter_my_settings()
+function s:ddu_ff_filter_my_settings() abort
+  inoremap <buffer> <CR>
+  \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+  inoremap <buffer> <Esc>
+  \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+  nnoremap <buffer> <CR>
+  \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+endfunction
 
-call denite#custom#option('default', {
-\ 'auto_action': 'preview',
-\ 'floating_preview': v:true,
-\ 'preview_height': float2nr(&lines * s:floating_window_height_ratio),
-\ 'preview_width': float2nr(&columns * s:floating_window_width_ratio / 2),
-\ 'prompt': '% ',
-\ 'split': 'floating',
-\ 'vertical_preview': v:true,
-\ 'wincol': float2nr((&columns - (&columns * s:floating_window_width_ratio)) / 2),
-\ 'winheight': float2nr(&lines * s:floating_window_height_ratio),
-\ 'winrow': float2nr((&lines - (&lines * s:floating_window_height_ratio)) / 2),
-\ 'winwidth': float2nr(&columns * s:floating_window_width_ratio / 2),
-\ })
+nmap <silent> <C-n> <Cmd>call ddu#start()<CR>
+nmap <silent> <C-l> <Cmd>call ddu#start(#{ sources: [#{ name: 'file_old' }] })<CR>
 
+" --------------------------------------------------
+" ddu-ui-filer
+" ddu-column-filename
+" --------------------------------------------------
+call ddu#custom#patch_local('filer', #{
+    \   ui: 'filer',
+    \   sources: [#{ name: 'file', params: {} }],
+    \   sourceOptions: #{
+    \     _: #{
+    \       columns: ['filename'],
+    \     },
+    \   },
+    \   uiParams: #{
+    \     filer: #{
+    \       split: 'floating',
+    \     }
+    \   },
+    \   actionOptions: #{
+    \     narrow: #{
+    \       quit: v:false,
+    \     },
+    \   },
+    \ })
+
+autocmd FileType ddu-filer call s:ddu_filer_my_settings()
+function s:ddu_filer_my_settings() abort
+  nnoremap <buffer><silent><expr> <CR>
+  \ ddu#ui#get_item()->get('isTree', v:false) ?
+  \ "<Cmd>call ddu#ui#do_action('itemAction', {'name': 'narrow'})<CR>" :
+  \ "<Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'tabe'}})<CR>"
+  " 一番右側に開く
+  " \ "<Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'botright vsplit'}})<CR>"
+  " nnoremap <buffer> <CR>
+  " \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
+  nnoremap <buffer><silent> ..
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'narrow', 'params': {'path': '..'}})<CR>
+  nnoremap <buffer> <Space>
+  \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
+  nnoremap <buffer> o
+  \ <Cmd>call ddu#ui#do_action('expandItem', #{ mode: 'toggle' } )<CR>
+  nnoremap <buffer> q
+  \ <Cmd>call ddu#ui#do_action('quit')<CR>
+  nnoremap <buffer><silent> c
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'copy'})<CR>
+  nnoremap <buffer><silent> p
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'paste'})<CR>
+  nnoremap <buffer><silent> d
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'delete'})<CR>
+  nnoremap <buffer><silent> r
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'rename'})<CR>
+  nnoremap <buffer><silent> mv
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'move'})<CR>
+  nnoremap <buffer><silent> t
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'newFile'})<CR>
+  nnoremap <buffer><silent> mk
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'newDirectory'})<CR>
+  nnoremap <buffer><silent> yy
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'yank'})<CR>
+  " toggle hidden files.
+  nnoremap <buffer> .
+  \ <Cmd>call ddu#ui#do_action('updateOptions', #{
+  \   sourceOptions: #{
+  \     _: #{
+  \       matchers: ToggleHidden(),
+  \     },
+  \   },
+  \ })<CR>
+  \<Cmd>call ddu#ui#do_action('redraw')<CR>
+  function! ToggleHidden()
+    const current = ddu#custom#get_current(b:ddu_ui_name)
+    const source_options = get(current, 'sourceOptions', {})
+    const source_options_all = get(source_options, '_', {})
+    const matchers = get(source_options_all, 'matchers', [])
+    return empty(matchers) ? ['matcher_hidden'] : []
+  endfunction
+endfunction
+
+nmap <silent> ,d <Cmd>call ddu#start(#{ name: 'filer' })<CR>
+
+" --------------------------------------------------
+" ddu-source-rg
+" --------------------------------------------------
+call ddu#custom#patch_local('grep', #{
+    \   sources: [#{ name: 'rg', params: {} }],
+    \ })
+
+nnoremap ,g
+  \ <Cmd>call ddu#start(#{
+  \   name: 'grep',
+  \   sourceParams: #{
+  \     rg: #{
+  \       args: ['--column'],
+  \       input: input('Pattern: '),
+  \     },
+  \   },
+  \ })<CR>
+
+nnoremap ,gw
+  \ <Cmd>call ddu#start(#{
+  \   name: 'grep',
+  \   sourceParams: #{
+  \     rg: #{
+  \       args: ['-w', '--column'],
+  \       input: input('Pattern: ', expand('<cword>')),
+  \     },
+  \   },
+  \ })<CR>
 
 " --------------------------------------------------
 " deoplete
