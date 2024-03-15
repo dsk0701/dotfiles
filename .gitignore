@@ -44,10 +44,14 @@ xcuserdata
 *.hmap
 *.ipa
 
-
 # android studio
 .gradle
 /local.properties
 .idea
 /release.properties
+
+.config/
+!.config/nvim/
+!.config/peco/
+!.config/powerline/
 
