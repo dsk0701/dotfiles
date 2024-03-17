@@ -33,13 +33,6 @@ call dein#begin(s:dein_base)
 
 call dein#add(s:dein_src)
 
-" Your plugins go here:
-call dein#add('Shougo/deoplete.nvim')
-if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
-endif
-
 call dein#add('vim-denops/denops.vim')
 
 call dein#add('Shougo/ddu.vim')
@@ -52,6 +45,11 @@ call dein#add('Shougo/ddu-filter-matcher_substring')
 call dein#add('Shougo/ddu-ui-filer')
 call dein#add('Shougo/ddu-source-file')
 call dein#add('Shougo/ddu-column-filename')
+call dein#add('Shougo/ddc.vim')
+call dein#add('Shougo/ddc-ui-native')
+call dein#add('Shougo/ddc-source-around')
+call dein#add('Shougo/ddc-matcher_head')
+call dein#add('Shougo/ddc-sorter_rank')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('tokorom/swift-dict.vim')
 call dein#add('keith/swift.vim')
@@ -69,16 +67,13 @@ call dein#add('vim-scripts/taglist.vim')
 call dein#add('itchyny/lightline.vim')
 call dein#add('ekalinin/Dockerfile.vim')
 call dein#add('dart-lang/dart-vim-plugin')
+call dein#add('mattn/vim-molder')
+call dein#add('mattn/vim-molder-operations')
 
 " Markdown
 call dein#add('godlygeek/tabular')
 call dein#add('plasticboy/vim-markdown')
 call dein#add('previm/previm.git')
-
-" Swift completion
-" call dein#add('prabirshrestha/vim-lsp')
-" call dein#add('mattn/vim-lsp-settings')
-" call dein#add('lighttiger2505/deoplete-vim-lsp')
 
 " Git
 call dein#add('tpope/vim-fugitive.git')

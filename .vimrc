@@ -191,26 +191,54 @@ nnoremap ,gw
   \ })<CR>
 
 " --------------------------------------------------
-" deoplete
+" ddc
 " --------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-" let g:deoplete#sources#swift#daemon_autostart = 0
+" You must set the default ui.
+" NOTE: native ui
+" https://github.com/Shougo/ddc-ui-native
+call ddc#custom#patch_global('ui', 'native')
 
-" Use smartcase.
-call deoplete#custom#option('smart_case', v:true)
+" Use around source.
+" https://github.com/Shougo/ddc-source-around
+call ddc#custom#patch_global('sources', ['around'])
+
+" Use matcher_head and sorter_rank.
+" https://github.com/Shougo/ddc-matcher_head
+" https://github.com/Shougo/ddc-sorter_rank
+call ddc#custom#patch_global('sourceOptions', #{
+      \   _: #{
+      \     matchers: ['matcher_head'],
+      \     sorters: ['sorter_rank']},
+      \   },
+      \ )
+
+" Change source options
+call ddc#custom#patch_global('sourceOptions', #{
+      \   around: #{ mark: 'A' },
+      \ })
+call ddc#custom#patch_global('sourceParams', #{
+      \   around: #{ maxSize: 500 },
+      \ })
+
+" Customize settings on a filetype
+call ddc#custom#patch_filetype(
+    \   ['c', 'cpp'], 'sources', ['around', 'clangd']
+    \ )
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', #{
+    \   clangd: #{ mark: 'C' },
+    \ })
+call ddc#custom#patch_filetype('markdown', 'sourceParams', #{
+    \   around: #{ maxSize: 100 },
+    \ })
+
+" Use ddc.
+call ddc#enable()
 
 " 一番上の候補を選択状態にする
 set completeopt+=noinsert
 
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-    return pumvisible() ? deoplete#close_popup() : "\<CR>"
-endfunction
+" 補完表示時 Enter で改行しない
+inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 
 " --------------------------------------------------
 " vim-markdown
@@ -227,18 +255,6 @@ vnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv0' : 'l'
 " 改行時にインデントがおかしくなってしまうのを回避
 let g:vim_markdown_auto_insert_bullets = 0
 let g:vim_markdown_new_list_item_indent = 0
-
-" --------------------------------------------------
-" Swift completion
-" --------------------------------------------------
-" let g:lsp_signature_help_enabled = 1
-" let g:lsp_diagnostics_enabled = 1
-" let g:lsp_diagnostics_echo_cursor = 1
-" Xcode、Toolchainどちらsourcekit-lspでもimport UIKitでno such module 'UIKit'エラー
-" let g:lsp_settings = {
-" \  'sourcekit-lsp': {'cmd': ['xcrun', 'sourcekit-lsp']}
-" \  'sourcekit-lsp': {'cmd': ['xcrun', '--toolchain', 'org.swift.533202101251a', 'sourcekit-lsp']}
-" \}
 
 " --------------------------------------------------
 " ruby
