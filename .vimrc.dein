@@ -52,6 +52,9 @@ call dein#add('Shougo/ddc-matcher_head')
 call dein#add('Shougo/ddc-sorter_rank')
 
 " call dein#add('Shougo/ddc-source-lsp')
+
+" 以下を参考に ddc-source-vim-lsp を使っている。
+" https://qiita.com/t7u-ito/items/e43cbb8597ffa21835a6
 call dein#add('shun/ddc-source-vim-lsp')
 call dein#add('prabirshrestha/vim-lsp')
 call dein#add('mattn/vim-lsp-settings')
