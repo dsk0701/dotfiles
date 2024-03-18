@@ -200,7 +200,7 @@ call ddc#custom#patch_global('ui', 'native')
 
 " Use around source.
 " https://github.com/Shougo/ddc-source-around
-call ddc#custom#patch_global('sources', ['around'])
+call ddc#custom#patch_global('sources', ['around', 'vim-lsp'])
 
 " Use matcher_head and sorter_rank.
 " https://github.com/Shougo/ddc-matcher_head
@@ -214,10 +214,17 @@ call ddc#custom#patch_global('sourceOptions', #{
 
 " Change source options
 call ddc#custom#patch_global('sourceOptions', #{
-      \   around: #{ mark: 'A' },
+      \   around: #{ mark: '[Around]' },
       \ })
 call ddc#custom#patch_global('sourceParams', #{
       \   around: #{ maxSize: 500 },
+      \ })
+
+call ddc#custom#patch_global('sourceOptions', #{
+      \   vim-lsp: #{
+      \     mark: '[LSP]',
+      \     forceCompletionPattern: '\.\w*|:\w*|->\w*',
+      \   },
       \ })
 
 " Customize settings on a filetype
@@ -239,6 +246,15 @@ set completeopt+=noinsert
 
 " 補完表示時 Enter で改行しない
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+
+" --------------------------------------------------
+" vim-lsp Settings
+" --------------------------------------------------
+nnoremap ]d :LspNextDiagnostic<CR>
+nnoremap [d :LspPreviousDiagnostic<CR>
+nnoremap ]e :LspNextError<CR>
+nnoremap [e :LspPreviousError<CR>
+nnoremap <C-]> :LspDefinition<CR>
 
 " --------------------------------------------------
 " vim-markdown
