@@ -57,9 +57,9 @@ autocmd FileType ddu-ff call s:ddu_ff_my_settings()
 function s:ddu_ff_my_settings() abort
   nnoremap <buffer> <CR>
   \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open'})<CR>
-  nnoremap <buffer> v
-  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'vsplit'}})<CR>
   nnoremap <buffer> V
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'vsplit'}})<CR>
+  nnoremap <buffer> v
   \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'botright vsplit'}})<CR>
   nnoremap <buffer> i
   \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
@@ -80,7 +80,7 @@ function s:ddu_ff_filter_my_settings() abort
 endfunction
 
 nmap <silent> <C-n> <Cmd>call ddu#start()<CR>
-nmap <silent> <C-l> <Cmd>call ddu#start(#{ sources: [#{ name: 'file_old' }] })<CR>
+nmap <silent> <C-l> <Cmd>call ddu#start(#{ sources: [#{ name: 'mr' }] })<CR>
 
 " --------------------------------------------------
 " ddu-ui-filer
@@ -250,6 +250,7 @@ inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 " --------------------------------------------------
 " vim-lsp Settings
 " --------------------------------------------------
+let g:lsp_auto_enable = 0
 nnoremap ]d :LspNextDiagnostic<CR>
 nnoremap [d :LspPreviousDiagnostic<CR>
 nnoremap ]e :LspNextError<CR>
