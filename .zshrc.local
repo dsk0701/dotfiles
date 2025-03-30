@@ -40,6 +40,10 @@ export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROO
 # Dart
 export PATH=$PATH:$HOME/.pub-cache/bin
 
+# fvm
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/dsk/.dart-cli-completion/zsh-config.zsh ]] && . /Users/dsk/.dart-cli-completion/zsh-config.zsh || true
+
 # GitHub CLI
 eval "$(gh completion -s zsh)"
 
