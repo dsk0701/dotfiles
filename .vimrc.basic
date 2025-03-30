@@ -13,10 +13,6 @@ set t_Co=256
 " スクロールオフセット
 set scrolloff=0
 
-" テーマ.
-" colorscheme koehler
-colorscheme molokai
-
 " 行番号表示.
 set number
 
