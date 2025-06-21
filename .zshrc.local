@@ -1,6 +1,9 @@
 # git ssl settings.
 export GIT_SSL_NO_VERIFY=true
 
+# GitHub CLI
+eval "$(gh completion -s zsh)"
+
 # git diff-highlight
 export PATH=/opt/homebrew/share/git-core/contrib/diff-highlight:$PATH
 
@@ -11,31 +14,12 @@ if [ -x "`which go`" ]; then
       export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
 
-# python powerline.
-export PATH=~/Library/Python/2.7/bin:$PATH
-
-# HomebrewのOpensslを使うように
-# brew link openssl --forceすると警告が出てパスを通せなくなったのでコマンドやライブラリなどにパスを通す
-# Warning: Refusing to link macOS-provided software: openssl@1.1
-export PATH=/opt/homebrew/opt/openssl@1.1/bin:$PATH
-# For compilers to find openssl@1.1 you may need to set:
-export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
-# For pkg-config to find openssl@1.1 you may need to set:
-export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
-
-# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=/Users/dsk/bin/cocos2d-x-3.2/tools/cocos2d-console/bin
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
-
-# Add environment variable NDK_ROOT for cocos2d-x
-export NDK_ROOT=/Users/dsk/bin/android-ndk-r10
-export PATH=$NDK_ROOT:$PATH
-
-# Add environment variable ANDROID_SDK_ROOT for cocos2d-x
+# Android development
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
-export PATH=$ANDROID_SDK_ROOT:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH
+
+# Java
+export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jbr/Contents/Home
 
 # Dart
 export PATH=$PATH:$HOME/.pub-cache/bin
@@ -43,7 +27,4 @@ export PATH=$PATH:$HOME/.pub-cache/bin
 # fvm
 ## Completion scripts setup. Remove the following line to uninstall
 [[ -f /Users/dsk/.dart-cli-completion/zsh-config.zsh ]] && . /Users/dsk/.dart-cli-completion/zsh-config.zsh || true
-
-# GitHub CLI
-eval "$(gh completion -s zsh)"
 
