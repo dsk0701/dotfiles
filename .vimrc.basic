@@ -88,10 +88,20 @@ aug END
 
 " タブのキーマッピング.
 nnoremap t <Nop>
-nnoremap tc :tabnew<Enter>
-nnoremap tq :tabclose<Enter>
-nnoremap tn :tabnext<Enter>
-nnoremap tp :tabprevious<Enter>
+
+if exists('g:vscode')
+    "VScode neovim extension configurations
+    nnoremap tc <Cmd>Tabnew<Enter>
+    nnoremap tq <Cmd>Tabclose<Enter>
+    nnoremap tn <Cmd>Tabnext<Enter>
+    nnoremap tp <Cmd>Tabprevious<Enter>
+else
+    " Neovim configurations
+    nnoremap tc :tabnew<Enter>
+    nnoremap tq :tabclose<Enter>
+    nnoremap tn :tabnext<Enter>
+    nnoremap tp :tabprevious<Enter>
+endif
 
 " ciy でカーソル位置の単語をヤンクした文字列で置換する.
 nnoremap <silent> ciy ciw<C-r>0<ESC>
