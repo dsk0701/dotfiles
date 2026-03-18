@@ -322,5 +322,8 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # asdf
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
+# claude code
+export PATH="$HOME/.local/bin:$PATH"
+
 # local設定の読み込み
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
