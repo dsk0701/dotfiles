@@ -10,9 +10,6 @@ filetype plugin indent on
 " 256色使えるように設定.
 set t_Co=256
 
-" スクロールオフセット
-set scrolloff=0
-
 " 行番号表示.
 set number
 
@@ -30,12 +27,6 @@ set nobackup
 
 " 全てのモードでマウス利用可能に.
 set mouse=a
-
-" C言語インデント設定.
-set cin
-
-" Javaの無名クラスを正しくインデントする設定.
-set cinoptions=j1
 
 " タブを半角スペースで入力.
 set et

@@ -257,12 +257,35 @@ inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 " --------------------------------------------------
 " vim-lsp Settings
 " --------------------------------------------------
-let g:lsp_auto_enable = 0
+let g:lsp_auto_enable = 1
+
+" Swift ファイルを開いたとき buildServer.json がなければ警告
+autocmd FileType swift call s:check_build_server_json()
+function s:check_build_server_json() abort
+  let l:dir = expand('%:p:h')
+  while l:dir !=# '/'
+    if isdirectory(l:dir . '/.git') || filereadable(l:dir . '/.git')
+      if !filereadable(l:dir . '/buildServer.json')
+        echohl WarningMsg
+        echomsg '[LSP] buildServer.json が見つかりません。プロジェクトルートで xbs-setup を実行してください'
+        echohl None
+      endif
+      return
+    endif
+    let l:dir = fnamemodify(l:dir, ':h')
+  endwhile
+endfunction
+
 nnoremap ]d :LspNextDiagnostic<CR>
 nnoremap [d :LspPreviousDiagnostic<CR>
-nnoremap ]e :LspNextError<CR>
-nnoremap [e :LspPreviousError<CR>
 nnoremap <C-]> :LspDefinition<CR>
+nnoremap K :LspHover<CR>
+nnoremap gr :LspReferences<CR>
+nnoremap gd :LspDefinition<CR>
+nnoremap gi :LspImplementation<CR>
+nnoremap <Space>rn :LspRename<CR>
+nnoremap <Space>ca :LspCodeAction<CR>
+nnoremap <Space>f :LspDocumentFormat<CR>
 
 " --------------------------------------------------
 " vim-markdown
@@ -321,16 +344,6 @@ let g:EmacsCommandLineSearchCommandLineMap = '<M-r>'
 " --------------------------------------------------
 " lightline
 " --------------------------------------------------
-scriptencoding utf-8
-set encoding=utf-8
-set gfn=Ricty\ Regular\ for\ Powerline:h14
-
-" setting for patched font.
-let left_sep = ''
-let left_sub_sep = ''
-let right_sep = ''
-let right_sub_sep = ''
-
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
@@ -343,8 +356,6 @@ let g:lightline = {
       \   'fileencoding': 'LightlineFileencoding',
       \   'mode': 'LightlineMode',
       \ },
-      \ 'separator': { 'left': left_sep, 'right': right_sep },
-      \ 'subseparator': { 'left': left_sub_sep, 'right': right_sub_sep }
       \ }
 
 function! LightlineFugitive()
@@ -392,15 +403,6 @@ if has('mac')
     " 勝手に改行しない.
     set formatoptions=q
 
-    " iOS tag ファイル設定.
-    " au BufEnter *.c,*.cpp,*.m,*.h  set tags+=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/tags
-
-    " Android tag ファイル設定.
-    " au BufEnter *.java  set tags+=~/var/dev/ref/ae/src/android-4.0.1_r1/tags
-
-    " play framework ファイル設定.
-    " au BufEnter *.java  set tags+=~/var/dev/ref/play/playframework-2.3.8/framework/src/tags
-
     " for grep.vim.
     if system('which gxargs')
         let Grep_Xargs_Path = 'gxargs'
@@ -420,35 +422,6 @@ if has('mac')
     autocmd FileType java,kotlin,xml nmap ,r <Plug>(android-studio-actions-debug)
     autocmd FileType java,kotlin,xml nmap ,b <Plug>(android-studio-actions-rebuild)
     autocmd FileType java,kotlin,xml nmap ,o <Plug>(android-studio-actions-openfile)
-
-" windows.
-elseif has('win32')
-    " ref.vimの設定
-    nmap ,ra :Ref alc<Space>
-    " nmap ,ra :<C-u>Ref alc<Space>
-    let $PATH = $PATH . ';C:\Program Files\Lynx for Win32'
-    let g:ref_alc_use_cache = 1
-    let g:ref_alc_start_linenumber = 33
-    let g:ref_alc_encoding = 'Shift-JIS'
-    " filetypeが分からんならalc
-    call ref#register_detection('_', 'alc')
-
-    " Cygwinのgrepを使う場合の設定.
-    set grepprg=c:/cygwin1.7/bin/grep\ -nH
-    let $CYGWIN='nodosfilewarning'
-
-
-    " grep.vimの設定.
-    let Grep_Path = 'C:\GnuWin32\bin\grep.exe'
-    let Fgrep_Path = 'C:\GnuWin32\bin\grep.exe -F'
-    let Egrep_Path = 'C:\GnuWin32\bin\grep.exe -E'
-    let Grep_Find_Path = 'C:\GnuWin32\bin\find.exe'
-    let Grep_Xargs_Path = 'C:\GnuWin32\bin\xargs.exe'
-    let Grep_Shell_Quote_Char = '"'
-    let Grep_Skip_Dirs = '.svn'
-
-    " 改行コードの設定.
-    set fileformat=unix
 
 endif
 

@@ -325,5 +325,26 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # claude code
 export PATH="$HOME/.local/bin:$PATH"
 
+# xcode-build-server セットアップ
+function xbs-setup() {
+  local xcworkspace=(*.xcworkspace(N))
+  local xcodeproj=(*.xcodeproj(N))
+
+  if [[ -n "$xcworkspace" ]]; then
+    local scheme=$(xcodebuild -workspace "$xcworkspace[1]" -list 2>/dev/null | sed -n '/Schemes:/,/^$/p' | sed '1d;/^$/d' | head -1 | xargs)
+    if [[ -n "$scheme" ]]; then
+      xcode-build-server config -workspace "$xcworkspace[1]" -scheme "$scheme"
+    else
+      echo "Error: スキームが見つかりません"
+      return 1
+    fi
+  elif [[ -n "$xcodeproj" ]]; then
+    xcode-build-server config -project "$xcodeproj[1]"
+  else
+    echo "Error: .xcworkspace または .xcodeproj が見つかりません"
+    return 1
+  fi
+}
+
 # local設定の読み込み
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
