@@ -1,6 +1,3 @@
-# git ssl settings.
-export GIT_SSL_NO_VERIFY=true
-
 # GitHub CLI
 eval "$(gh completion -s zsh)"
 

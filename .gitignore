@@ -2,10 +2,7 @@
 *.un~
 tags
 .netrwhist
-.vim/bundle
 .vim/dein
-.vim/eclim
-.vim/plugin
 
 # mac
 .DS_Store
@@ -53,7 +50,6 @@ xcuserdata
 .config/
 !.config/nvim/
 !.config/peco/
-!.config/powerline/
 
 plan.md
 

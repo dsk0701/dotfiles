@@ -16,27 +16,11 @@
     autocrlf = false
     ignorecase = false
 
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path = 
-
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
-
 [push]
     default = simple
 
 [credential]
     helper = osxkeychain
-
-#driver for merging XCode project files
-[merge "mergepbx"]
-    name = XCode project files merger
-    driver = mergepbx %O %A %B
-
-[http]
-    sslVerify = false
 
 [pager]
     log = diff-highlight | less

@@ -1,9 +1,3 @@
-# 参考ページ
-# http://d.hatena.ne.jp/cooldaemon/searchdiary?word=*%5Bzsh%5D
-# http://hatena.g.hatena.ne.jp/hatenatech/20060517/1147833430
-# http://www.ayu.ics.keio.ac.jp/~mukai/translate/zshoptions.html
-# http://zshwiki.org/home/
-
 # --------------------------------------------------------------------------------
 # キー設定
 # --------------------------------------------------------------------------------
@@ -18,9 +12,6 @@ bindkey '^P' history-beginning-search-backward-end
 bindkey '^N' history-beginning-search-forward-end
 bindkey '^[[A' history-beginning-search-backward-end # ↑キー
 bindkey '^[[B' history-beginning-search-forward-end  # ↓キー
-
-# Ctrl-rでインクリメンタルサーチ (*等でAnd検索可能に)
-bindkey '^R' history-incremental-pattern-search-backward
 
 # --------------------------------------------------------------------------------
 # 補完設定
@@ -52,22 +43,6 @@ setopt magic_equal_subst
 
 # 補完候補を ←↓↑→ で選択 (補完候補が色分け表示される)
 zstyle ':completion:*:default' menu select=1
-
-# Termに表示されている内容から補完
-# from http://d.hatena.ne.jp/secondlife/20060108/1136650653
-HARDCOPYFILE=$HOME/.screen-hardcopy
-touch $HARDCOPYFILE
-
-dabbrev-complete () {
-        local reply lines=80 # 80行分
-        screen -X eval "hardcopy -h $HARDCOPYFILE"
-        reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
-        compadd - "${reply[@]%[*/=@|]}"
-}
-
-zle -C dabbrev-complete menu-complete dabbrev-complete
-bindkey '^o' dabbrev-complete
-bindkey '^o^_' reverse-menu-complete
 
 # --------------------------------------------------------------------------------
 # hisotry設定
@@ -169,16 +144,6 @@ esac
 RPROMPT_DEFAULT='%{$fg[yellow]%}[%~]%{$reset_color%}'
 RPROMPT=$RPROMPT_DEFAULT
 
-# Change the window title of X terminals 
-case ${TERM} in
-	xterm*|rxvt*|Eterm|aterm|kterm|gnome)
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
-		;;
-	screen)
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
-		;;
-esac
-
 # --------------------------------------------------------------------------------
 # その他設定
 # --------------------------------------------------------------------------------
@@ -211,11 +176,6 @@ setopt print_eightbit
 # 文字列末尾に改行コードが無い場合でも表示する
 unsetopt promptcr
 
-# screen のステータスラインにコマンド表示する
-preexec () {
-  [ ${STY} ] && echo -ne "\ek${1%% *}\e\\"
-}
-
 # --------------------------------------------------------------------------------
 # 環境変数
 # --------------------------------------------------------------------------------
@@ -224,12 +184,7 @@ preexec () {
 export TIMEFMT=$'%J : \n real\t%*Es\n user\t%*Us\n sys \t%*Ss\n cpu \t%P'
 
 export GIT_EDITOR="nvim"
-export SVN_EDITOR="vim"
 export PATH=$HOME/bin:$PATH
-export RUBYOPT="$RUBYOPT -Ku"
-
-# ant file encoding.
-export ANT_OPTS=-Dfile.encoding=UTF8
 
 # 重複したPATHを削除
 typeset -U path
@@ -237,18 +192,8 @@ typeset -U path
 # --------------------------------------------------------------------------------
 # alias
 # --------------------------------------------------------------------------------
-#
-# colors for ls.
-alias d="ls --color"
-alias ls="ls --color=auto -F"
-unset LS_COLORS
-
-alias grep='grep --color=auto'
-#alias cp="cp -i"
 alias rm="rm -i"
 alias mv="mv -i"
-alias google="w3m www.google.co.jp"
-
 # unixtime to localtime
 alias -g TIME="| awk '{print strftime(\"%Y-%m-%d %H:%M:%S\",\$1)}'"
 alias -g UTIME="| awk '{print strftime(\"%Y-%m-%d %H:%M:%S %Z\",\$1,1)}'"  # UTC (from awk 3.1.6)
@@ -270,39 +215,8 @@ case "${OSTYPE}" in
         export LSCOLORS=gxfxcxdxbxegedabagacad
 
         # HomeBrew 設定
-        # arm64のパッケージを優先的に使用する。
-        path=(
-            /opt/homebrew/bin(N-/)
-            /usr/local/bin(N-/)
-            $path
-        )
-        if (( $+commands[sw_vers] )) && (( $+commands[arch] )); then
-            # [[ -x /usr/local/bin/brew ]] && alias brew="arch -arch x86_64 /usr/local/bin/brew"
-            alias x64='exec arch -x86_64 /bin/zsh'
-            alias a64='exec arch -arm64e /bin/zsh'
+        eval $(/opt/homebrew/bin/brew shellenv)
 
-            ARCH=$(uname -m)
-            if [[ $ARCH == arm64 ]]; then
-                echo "Current Architecture: $ARCH"
-                eval $(/opt/homebrew/bin/brew shellenv)
-            elif [[ $ARCH == x86_64 ]]; then
-                echo "Current Architecture: $ARCH"
-                eval $(/usr/local/bin/brew shellenv)
-            fi
-        else
-            # homebrew のパスに*-configがあると正常に動かないかもしれないというbrew doctorのwarning対策
-            # https://qiita.com/tsukapah/items/40462aa2311ce6269571
-            alias brew="env PATH=${PATH/\/Users\/${USER}\/\.pyenv\/shims:/} brew"
-        fi
-
-        # macvim 設定
-        MACVIM_DIR="/Applications/MacVim.app/Contents/MacOS"
-        if [ -d ${MACVIM_DIR} ]; then
-            alias vim='env LANG=ja_JP.UTF-8 ${MACVIM_DIR}/Vim "$@"'
-            alias gvim='env LANG=ja_JP.UTF-8 ${MACVIM_DIR}/mvim "$@"'
-            alias gvimdiff='env LANG=ja_JP.UTF-8 ${MACVIM_DIR}/mvimdiff "$@"'
-            alias ctags='${MACVIM_DIR}/ctags "$@"'
-        fi
         ;;
 esac
 
