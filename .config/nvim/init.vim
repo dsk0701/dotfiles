@@ -258,9 +258,8 @@ set completeopt+=noinsert
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 
 " --------------------------------------------------
-" vim-lsp Settings
+" LSP Settings
 " --------------------------------------------------
-let g:lsp_auto_enable = 1
 
 " Swift ファイルを開いたとき buildServer.json がなければ警告
 autocmd FileType swift call s:check_build_server_json()
@@ -279,16 +278,16 @@ function s:check_build_server_json() abort
   endwhile
 endfunction
 
-nnoremap ]d :LspNextDiagnostic<CR>
-nnoremap [d :LspPreviousDiagnostic<CR>
-nnoremap <C-]> :LspDefinition<CR>
-nnoremap K :LspHover<CR>
-nnoremap gr :LspReferences<CR>
-nnoremap gd :LspDefinition<CR>
-nnoremap gi :LspImplementation<CR>
-nnoremap <Space>rn :LspRename<CR>
-nnoremap <Space>ca :LspCodeAction<CR>
-nnoremap <Space>f :LspDocumentFormat<CR>
+nnoremap ]d <Cmd>lua vim.diagnostic.goto_next()<CR>
+nnoremap [d <Cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <C-]> <Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap K <Cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap gr <Cmd>call ddu#start(#{ sources: [#{ name: 'lsp_references' }] })<CR>
+nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap gi <Cmd>call ddu#start(#{ sources: [#{ name: 'lsp_implementation' }] })<CR>
+nnoremap <Space>rn <Cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <Space>ca <Cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <Space>f <Cmd>lua vim.lsp.buf.format()<CR>
 
 " --------------------------------------------------
 " vim-markdown
