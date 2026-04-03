@@ -42,6 +42,9 @@ call ddu#custom#patch_global(#{
     \     file: #{
     \       defaultAction: 'open',
     \     },
+    \     lsp: #{
+    \       defaultAction: 'open',
+    \     },
     \   },
     \   uiParams: #{
     \     ff: #{
@@ -207,7 +210,7 @@ call ddc#custom#patch_global('ui', 'native')
 
 " Use around source.
 " https://github.com/Shougo/ddc-source-around
-call ddc#custom#patch_global('sources', ['around', 'vim-lsp'])
+call ddc#custom#patch_global('sources', ['around', 'lsp'])
 
 " Use matcher_head and sorter_rank.
 " https://github.com/Shougo/ddc-matcher_head
@@ -228,7 +231,7 @@ call ddc#custom#patch_global('sourceParams', #{
       \ })
 
 call ddc#custom#patch_global('sourceOptions', #{
-      \   vim-lsp: #{
+      \   lsp: #{
       \     mark: '[LSP]',
       \     forceCompletionPattern: '\.\w*|:\w*|->\w*',
       \   },
