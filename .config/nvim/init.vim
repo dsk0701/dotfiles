@@ -285,7 +285,7 @@ nnoremap <C-]> <Cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap K <Cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap gr <Cmd>call ddu#start(#{ sources: [#{ name: 'lsp_references' }] })<CR>
 nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap gi <Cmd>call ddu#start(#{ sources: [#{ name: 'lsp_implementation' }] })<CR>
+nnoremap gi <Cmd>call ddu#start(#{ sources: [#{ name: 'lsp_definition', params: #{ method: 'textDocument/implementation' } }] })<CR>
 nnoremap <Space>rn <Cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <Space>ca <Cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <Space>f <Cmd>lua vim.lsp.buf.format()<CR>
