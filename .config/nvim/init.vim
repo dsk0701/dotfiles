@@ -250,6 +250,7 @@ call ddc#custom#patch_filetype('markdown', 'sourceParams', #{
 
 " Use ddc.
 call ddc#enable()
+autocmd User DenopsReady call ddc#enable()
 
 " 一番上の候補を選択状態にする
 set completeopt+=noinsert
