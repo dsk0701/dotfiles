@@ -1,11 +1,11 @@
 " 参考ページ
 " https://github.com/tokorom/dotfiles/blob/master/.vimrc
 
-" load init.lua
-lua require('init')
-
 " dein
 :source ~/.vimrc.dein
+
+" load init.lua
+lua require('init')
 
 " basic
 :source ~/.vimrc.basic
