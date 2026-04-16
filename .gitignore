@@ -47,7 +47,7 @@ xcuserdata
 .idea
 /release.properties
 
-.config/
+.config/*
 !.config/nvim/
 !.config/peco/
 
