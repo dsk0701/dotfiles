@@ -210,17 +210,14 @@ call ddc#custom#patch_global('ui', 'native')
 
 " Use around source.
 " https://github.com/Shougo/ddc-source-around
-call ddc#custom#patch_global('sources', ['around', 'lsp'])
+call ddc#custom#patch_global('sources', ['lsp', 'around'])
 
-" Use matcher_head and sorter_rank.
 " https://github.com/Shougo/ddc-matcher_head
-" https://github.com/Shougo/ddc-sorter_rank
 call ddc#custom#patch_global('sourceOptions', #{
       \   _: #{
       \     matchers: ['matcher_head'],
-      \     sorters: ['sorter_rank']},
       \   },
-      \ )
+      \ })
 
 " Change source options
 call ddc#custom#patch_global('sourceOptions', #{
@@ -233,7 +230,9 @@ call ddc#custom#patch_global('sourceParams', #{
 call ddc#custom#patch_global('sourceOptions', #{
       \   lsp: #{
       \     mark: '[LSP]',
+      \     isVolatile: v:true,
       \     forceCompletionPattern: '\.\w*|:\w*|->\w*',
+      \     sorters: ['sorter_lsp_kind'],
       \   },
       \ })
 

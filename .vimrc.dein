@@ -51,7 +51,6 @@ call dein#add('Shougo/ddc.vim')
 call dein#add('Shougo/ddc-ui-native')
 call dein#add('Shougo/ddc-source-around')
 call dein#add('Shougo/ddc-matcher_head')
-call dein#add('Shougo/ddc-sorter_rank')
 
 call dein#add('Shougo/ddc-source-lsp')
 
