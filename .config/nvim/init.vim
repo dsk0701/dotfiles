@@ -13,6 +13,7 @@ lua require('init')
 " テーマ.
 " colorscheme koehler
 colorscheme molokai
+highlight NormalFloat ctermbg=236
 
 " --------------------------------------------------
 " ddu
@@ -51,6 +52,7 @@ call ddu#custom#patch_global(#{
     \       split: 'floating',
     \       startFilter: v:true,
     \       prompt: '> ',
+    \       previewFloating: v:true,
     \     }
     \   },
     \   actionOptions: #{
@@ -67,14 +69,16 @@ autocmd FileType ddu-ff call s:ddu_ff_my_settings()
 function s:ddu_ff_my_settings() abort
   nnoremap <buffer> <CR>
   \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open'})<CR>
-  nnoremap <buffer> V
-  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'vsplit'}})<CR>
   nnoremap <buffer> v
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'vsplit'}})<CR>
+  nnoremap <buffer> V
   \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'botright vsplit'}})<CR>
+  nnoremap <buffer> t
+  \ <Cmd>call ddu#ui#do_action('itemAction', {'name': 'open', 'params': {'command': 'tabe'}})<CR>
   nnoremap <buffer> i
   \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
   nnoremap <buffer> p
-  \ <Cmd>call ddu#ui#do_action('preview')<CR>
+  \ <Cmd>call ddu#ui#do_action('togglePreview')<CR>
   nnoremap <buffer> q
   \ <Cmd>call ddu#ui#do_action('quit')<CR>
 endfunction
@@ -280,11 +284,10 @@ endfunction
 
 nnoremap ]d <Cmd>lua vim.diagnostic.goto_next()<CR>
 nnoremap [d <Cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap <C-]> <Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <C-]> <Cmd>call ddu#start(#{ sync: v:true, uiParams: #{ ff: #{ immediateAction: 'open' } }, sources: [#{ name: 'lsp_definition' }] })<CR>
 nnoremap K <Cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap gr <Cmd>call ddu#start(#{ sources: [#{ name: 'lsp_references' }] })<CR>
-nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap gi <Cmd>call ddu#start(#{ sources: [#{ name: 'lsp_definition', params: #{ method: 'textDocument/implementation' } }] })<CR>
+nnoremap gi <Cmd>call ddu#start(#{ sync: v:true, uiParams: #{ ff: #{ immediateAction: 'open' } }, sources: [#{ name: 'lsp_definition', params: #{ method: 'textDocument/implementation' } }] })<CR>
 nnoremap <Space>rn <Cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <Space>ca <Cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <Space>f <Cmd>lua vim.lsp.buf.format()<CR>
