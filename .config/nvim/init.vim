@@ -182,27 +182,24 @@ call ddu#custom#patch_local('grep', #{
     \   sources: [#{ name: 'rg', params: {} }],
     \ })
 
-nnoremap ,g
-  \ <Cmd>call ddu#start(#{
-  \   name: 'grep',
-  \   sourceParams: #{
-  \     rg: #{
-  \       args: ['--column'],
-  \       input: input('Pattern: '),
-  \     },
-  \   },
-  \ })<CR>
+function s:ddu_grep(args, default) abort
+  let l:pattern = input('Pattern: ', a:default)
+  if empty(l:pattern)
+    return
+  endif
+  call ddu#start(#{
+    \   name: 'grep',
+    \   sourceParams: #{
+    \     rg: #{
+    \       args: a:args,
+    \       input: l:pattern,
+    \     },
+    \   },
+    \ })
+endfunction
 
-nnoremap ,gw
-  \ <Cmd>call ddu#start(#{
-  \   name: 'grep',
-  \   sourceParams: #{
-  \     rg: #{
-  \       args: ['-w', '--column'],
-  \       input: input('Pattern: ', expand('<cword>')),
-  \     },
-  \   },
-  \ })<CR>
+nnoremap ,g <Cmd>call <SID>ddu_grep(['--column'], '')<CR>
+nnoremap ,gw <Cmd>call <SID>ddu_grep(['-w', '--column'], expand('<cword>'))<CR>
 
 " --------------------------------------------------
 " ddc
