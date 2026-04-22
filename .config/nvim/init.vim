@@ -200,6 +200,7 @@ endfunction
 
 nnoremap ,g <Cmd>call <SID>ddu_grep(['--column'], '')<CR>
 nnoremap ,gw <Cmd>call <SID>ddu_grep(['-w', '--column'], expand('<cword>'))<CR>
+nnoremap ,gr <Cmd>call ddu#start(#{ name: 'grep', resume: v:true })<CR>
 
 " --------------------------------------------------
 " ddc
@@ -426,4 +427,3 @@ if has('mac')
     autocmd FileType java,kotlin,xml nmap ,o <Plug>(android-studio-actions-openfile)
 
 endif
-
