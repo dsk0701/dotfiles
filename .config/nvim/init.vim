@@ -198,8 +198,8 @@ function s:ddu_grep(args, default) abort
     \ })
 endfunction
 
-nnoremap ,g <Cmd>call <SID>ddu_grep(['--column'], '')<CR>
-nnoremap ,gw <Cmd>call <SID>ddu_grep(['-w', '--column'], expand('<cword>'))<CR>
+nnoremap ,g <Cmd>call <SID>ddu_grep(['--column', '--no-heading', '--color', 'never'], '')<CR>
+nnoremap ,gw <Cmd>call <SID>ddu_grep(['-w', '--column', '--no-heading', '--color', 'never'], expand('<cword>'))<CR>
 nnoremap ,gr <Cmd>call ddu#start(#{ name: 'grep', resume: v:true })<CR>
 
 " --------------------------------------------------
