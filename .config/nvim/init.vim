@@ -189,6 +189,7 @@ function s:ddu_grep(args, default) abort
   endif
   call ddu#start(#{
     \   name: 'grep',
+    \   resume: v:false,
     \   sourceParams: #{
     \     rg: #{
     \       args: a:args,
