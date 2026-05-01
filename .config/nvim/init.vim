@@ -266,6 +266,10 @@ inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 
 " Swift ファイルを開いたとき buildServer.json がなければ警告
 autocmd FileType swift call s:check_build_server_json()
+" dein の indent/swift.vim が indentexpr=SwiftIndent() を設定するが、SwiftIndent() は
+" s:CursorToBlockStart() 内で blockStartPosition に代入した値を blockStartLnum で返す
+" バグがあり正しくインデントされない。indentexpr= で無効化し cindent にフォールバックする。
+autocmd FileType swift setlocal cindent indentexpr=
 function s:check_build_server_json() abort
   let l:dir = expand('%:p:h')
   while l:dir !=# '/'
