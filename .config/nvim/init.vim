@@ -16,6 +16,28 @@ colorscheme molokai
 highlight NormalFloat ctermbg=236
 
 " --------------------------------------------------
+" 既に開いているウィンドウ/タブがあればそこへ切り替えてバッファを開く.
+" ddu の open アクションの command パラメータとして利用する.
+" --------------------------------------------------
+function! s:switch_or_edit(file) abort
+  let l:path = fnamemodify(a:file, ':p')
+  for l:info in getbufinfo(#{ buflisted: 1 })
+    if empty(l:info.name) || empty(l:info.windows)
+      continue
+    endif
+    let l:name = fnamemodify(l:info.name, ':p')
+    " macOS の既定ファイルシステムは case-insensitive なので比較も合わせる.
+    let l:same = has('mac') ? (l:name ==? l:path) : (l:name ==# l:path)
+    if l:same
+      call win_gotoid(l:info.windows[0])
+      return
+    endif
+  endfor
+  execute 'edit' fnameescape(a:file)
+endfunction
+command! -nargs=1 -complete=file SwitchBufEdit call s:switch_or_edit(<q-args>)
+
+" --------------------------------------------------
 " ddu
 " ddu-ui-ff
 " --------------------------------------------------
@@ -34,6 +56,9 @@ call ddu#custom#patch_global(#{
     \       matchers: ['matcher_substring'],
     \       ignoreCase: v:true,
     \     },
+    \   },
+    \   actionParams: #{
+    \     open: #{ command: 'SwitchBufEdit' },
     \   },
     \   filterParams: #{
     \     matcher_substring: #{

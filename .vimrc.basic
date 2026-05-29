@@ -34,6 +34,10 @@ set et
 " タグファイルを辿って探す.
 set tags=./tags;
 
+" バッファジャンプ時に既に開いているウィンドウ/タブがあればそこへ切り替える.
+" quickfix (:cnext 等) や :sbuffer 等の Vim 標準コマンドに作用する.
+set switchbuf=useopen,usetab
+
 " 検索時のハイライト.
 set hlsearch
 
