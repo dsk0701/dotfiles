@@ -11,9 +11,8 @@ lua require('init')
 :source ~/.vimrc.basic
 
 " テーマ.
-" colorscheme koehler
-colorscheme molokai
-highlight NormalFloat ctermbg=236
+set termguicolors
+colorscheme tokyonight-storm
 
 " --------------------------------------------------
 " 既に開いているウィンドウ/タブがあればそこへ切り替えてバッファを開く.
@@ -379,7 +378,7 @@ let g:EmacsCommandLineSearchCommandLineMap = '<M-r>'
 " lightline
 " --------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'tokyonight',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
       \ },
