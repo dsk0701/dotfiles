@@ -1,0 +1,19 @@
+# Ghostty 設定
+# See: https://ghostty.org/docs/config
+
+# フォント (CJK 対応の HackGen Console)
+font-family = HackGen Console
+font-size = 14
+
+# カラースキーム (nvim の catppuccin-mocha に合わせる)
+theme = Catppuccin Mocha
+
+# true color (24bit)。tmux の terminal-overrides ",xterm-256color:Tc" にマッチさせるため
+# TERM を xterm-256color にする (Ghostty 既定の xterm-ghostty だと tmux の override に当たらない)
+term = xterm-256color
+
+# 見た目
+background-opacity = 1
+window-padding-x = 4
+window-padding-y = 4
+

@@ -12,7 +12,7 @@ lua require('init')
 
 " テーマ.
 set termguicolors
-colorscheme tokyonight-storm
+colorscheme catppuccin-mocha
 
 " --------------------------------------------------
 " 既に開いているウィンドウ/タブがあればそこへ切り替えてバッファを開く.
@@ -378,7 +378,7 @@ let g:EmacsCommandLineSearchCommandLineMap = '<M-r>'
 " lightline
 " --------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'tokyonight',
+      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
       \ },

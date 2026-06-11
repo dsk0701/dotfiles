@@ -50,7 +50,10 @@ xcuserdata
 .config/*
 !.config/nvim/
 !.config/peco/
+!.config/ghostty/
 
 plan.md
 docs/
 
+
+**/.claude/settings.local.json
