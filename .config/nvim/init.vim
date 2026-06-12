@@ -312,6 +312,7 @@ endfunction
 
 nnoremap ]d <Cmd>lua vim.diagnostic.goto_next()<CR>
 nnoremap [d <Cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <Space>e <Cmd>lua vim.diagnostic.setqflist()<CR><Cmd>copen<CR>
 nnoremap <C-]> <Cmd>call ddu#start(#{ sync: v:true, uiParams: #{ ff: #{ immediateAction: 'open' } }, sources: [#{ name: 'lsp_definition' }] })<CR>
 nnoremap K <Cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap gr <Cmd>call ddu#start(#{ sources: [#{ name: 'lsp_references' }] })<CR>
