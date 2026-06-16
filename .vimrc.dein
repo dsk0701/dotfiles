@@ -86,6 +86,7 @@ call dein#add('previm/previm.git')
 " Git
 call dein#add('tpope/vim-fugitive.git')
 call dein#add('cohama/agit.vim')
+call dein#add('rhysd/git-messenger.vim')
 
 " Xcode
 call dein#add('tokorom/xcode-actions.vim')
