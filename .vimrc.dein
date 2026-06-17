@@ -90,8 +90,15 @@ call dein#add('rhysd/git-messenger.vim')
 call dein#add('sindrets/diffview.nvim')
 call dein#add('nvim-tree/nvim-web-devicons')
 
-" Xcode
-call dein#add('tokorom/xcode-actions.vim')
+" Xcode (xcodebuild.nvim)
+" ピッカー UI は telescope を使用（普段のファイル検索等は ddu のまま）.
+call dein#add('nvim-lua/plenary.nvim')
+call dein#add('MunifTanjim/nui.nvim')
+call dein#add('nvim-telescope/telescope.nvim')
+call dein#add('mfussenegger/nvim-dap')
+call dein#add('nvim-neotest/nvim-nio')
+call dein#add('rcarriga/nvim-dap-ui')
+call dein#add('wojciech-kulik/xcodebuild.nvim')
 
 " Android Studio
 call dein#add('dsk0701/android-studio-actions.vim')

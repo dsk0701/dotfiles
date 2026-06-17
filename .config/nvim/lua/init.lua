@@ -43,3 +43,6 @@ end, { silent = true })
 -- コマンド駆動（:DiffviewOpen / :DiffviewClose、マージ中の :DiffviewOpen は 3-way）.
 -- ファイルアイコンは nvim-web-devicons を使用（.vimrc.dein で追加。表示には Nerd Font が必要）.
 require('diffview').setup({ use_icons = true })
+
+-- iOS/macOS 開発（xcodebuild.nvim）。ファイル名は module 名 'xcodebuild' と衝突させない.
+require('xcodebuild_config')

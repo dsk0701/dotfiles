@@ -1,6 +1,3 @@
-" 参考ページ
-" https://github.com/tokorom/dotfiles/blob/master/.vimrc
-
 " dein
 :source ~/.vimrc.dein
 
@@ -444,12 +441,7 @@ if has('mac')
         let Grep_Find_Use_Xargs = 0
     endif
 
-    " xcode-actions.vim
-    autocmd FileType objc,swift,c,cpp nmap ,b <Plug>(xcode-actions-build)
-    autocmd FileType objc,swift,c,cpp nmap ,r <Plug>(xcode-actions-run)
-    autocmd FileType objc,swift,c,cpp nmap ,c <Plug>(xcode-actions-clean)
-    autocmd FileType objc,swift,c,cpp nmap ,u <Plug>(xcode-actions-test)
-    autocmd FileType objc,swift,c,cpp nmap ,o <Plug>(xcode-actions-openfile)
+    " Xcode 操作は xcodebuild.nvim を使用（キーマップは lua/xcodebuild_config.lua の <Space>x* / <Space>d*）.
 
     " android-studio-actions.vim
     autocmd FileType java,kotlin,xml nmap ,t <Plug>(android-studio-actions-run)
