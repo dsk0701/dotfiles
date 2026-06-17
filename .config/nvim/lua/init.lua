@@ -38,3 +38,8 @@ vim.keymap.set('n', '<Space>gm', function()
   end
   vim.cmd('GitMessenger')
 end, { silent = true })
+
+-- 変更全体の差分レビューとマージコンフリクト解決.
+-- コマンド駆動（:DiffviewOpen / :DiffviewClose、マージ中の :DiffviewOpen は 3-way）.
+-- ファイルアイコンは nvim-web-devicons を使用（.vimrc.dein で追加。表示には Nerd Font が必要）.
+require('diffview').setup({ use_icons = true })

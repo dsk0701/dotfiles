@@ -87,6 +87,8 @@ call dein#add('previm/previm.git')
 call dein#add('tpope/vim-fugitive.git')
 call dein#add('cohama/agit.vim')
 call dein#add('rhysd/git-messenger.vim')
+call dein#add('sindrets/diffview.nvim')
+call dein#add('nvim-tree/nvim-web-devicons')
 
 " Xcode
 call dein#add('tokorom/xcode-actions.vim')
