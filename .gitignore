@@ -41,6 +41,9 @@ xcuserdata
 *.hmap
 *.ipa
 
+# xcodebuild.nvim (per-project state/logs)
+.nvim/
+
 # android studio
 .gradle
 /local.properties
