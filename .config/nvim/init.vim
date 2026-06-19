@@ -443,7 +443,7 @@ if has('mac')
         let Grep_Find_Use_Xargs = 0
     endif
 
-    " Xcode 操作は xcodebuild.nvim を使用（キーマップは lua/xcodebuild_config.lua の <Space>x* / <Space>d*）.
+    " Xcode 操作は xcodebuild.nvim を使用（キーマップは lua/xcodebuild_config.lua の <Space>x* / <Space>X / <Space>b）.
 
     " android-studio-actions.vim
     autocmd FileType java,kotlin,xml nmap ,t <Plug>(android-studio-actions-run)

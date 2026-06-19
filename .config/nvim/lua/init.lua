@@ -40,9 +40,15 @@ vim.keymap.set('n', '<Space>gm', function()
 end, { silent = true })
 
 -- 変更全体の差分レビューとマージコンフリクト解決.
--- コマンド駆動（:DiffviewOpen / :DiffviewClose、マージ中の :DiffviewOpen は 3-way）.
+-- マージ中の :DiffviewOpen は自動で 3-way 解決画面になる.
 -- ファイルアイコンは nvim-web-devicons を使用（.vimrc.dein で追加。表示には Nerd Font が必要）.
 require('diffview').setup({ use_icons = true })
+
+-- diffview のキーマップ（<Space>d = diffview）.
+vim.keymap.set('n', '<Space>do', '<Cmd>DiffviewOpen<CR>', { silent = true, desc = 'Diffview: 差分を開く' })
+vim.keymap.set('n', '<Space>dc', '<Cmd>DiffviewClose<CR>', { silent = true, desc = 'Diffview: 閉じる' })
+vim.keymap.set('n', '<Space>dh', '<Cmd>DiffviewFileHistory %<CR>', { silent = true, desc = 'Diffview: 現在ファイルの履歴' })
+vim.keymap.set('n', '<Space>dH', '<Cmd>DiffviewFileHistory<CR>', { silent = true, desc = 'Diffview: リポジトリ全体の履歴' })
 
 -- iOS/macOS 開発（xcodebuild.nvim）。ファイル名は module 名 'xcodebuild' と衝突させない.
 require('xcodebuild_config')
