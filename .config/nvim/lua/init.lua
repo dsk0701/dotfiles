@@ -52,3 +52,6 @@ vim.keymap.set('n', '<Space>dH', '<Cmd>DiffviewFileHistory<CR>', { silent = true
 
 -- iOS/macOS 開発（xcodebuild.nvim）。ファイル名は module 名 'xcodebuild' と衝突させない.
 require('xcodebuild_config')
+
+-- Claude Code 連携（選択範囲を送る / 変更を nvim の diff でレビュー）.
+require('claudecode_config')

@@ -100,6 +100,10 @@ call dein#add('nvim-neotest/nvim-nio')
 call dein#add('rcarriga/nvim-dap-ui')
 call dein#add('wojciech-kulik/xcodebuild.nvim')
 
+" Claude Code 連携（選択範囲をそのまま Claude に送る / 変更を nvim の diff でレビュー）.
+" snacks.nvim は任意。terminal provider を native にするため依存には追加しない.
+call dein#add('coder/claudecode.nvim')
+
 " Android Studio
 call dein#add('dsk0701/android-studio-actions.vim')
 
