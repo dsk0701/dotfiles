@@ -12,6 +12,8 @@ claudecode.setup({
   -- snacks.nvim を依存に入れていないため、組み込みの native ターミナルを使う.
   terminal = {
     provider = 'native',
+    -- Claude ペインを左側に開く（既定は 'right'）.
+    split_side = 'left',
   },
 })
 
