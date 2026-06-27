@@ -9,7 +9,8 @@ lua require('init')
 
 " テーマ.
 set termguicolors
-colorscheme catppuccin-mocha
+set background=dark
+colorscheme gruvbox
 
 " --------------------------------------------------
 " 既に開いているウィンドウ/タブがあればそこへ切り替えてバッファを開く.
