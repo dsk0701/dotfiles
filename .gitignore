@@ -55,8 +55,9 @@ xcuserdata
 !.config/peco/
 !.config/ghostty/
 
-plan.md
 docs/
 
 
 **/.claude/settings.local.json
+
+**/.claude/.cc-writes/
