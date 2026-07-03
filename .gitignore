@@ -54,6 +54,9 @@ xcuserdata
 !.config/nvim/
 !.config/peco/
 !.config/ghostty/
+!.config/herdr/
+.config/herdr/*
+!.config/herdr/config.toml
 
 docs/
 

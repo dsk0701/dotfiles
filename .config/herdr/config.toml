@@ -1,0 +1,56 @@
+# herdr configuration
+# .tmux.conf のキーバインド・テーマを移植したもの
+
+# 初回セットアップウィザードは表示しない（通知設定は本ファイルで指定済み）
+onboarding = false
+
+[theme]
+# tmux ステータスライン / nvim と同じ Gruvbox
+name = "gruvbox"
+
+[keys]
+# screen ライクに prefix は ^K（tmux と同じ）
+prefix = "ctrl+k"
+
+# ----------
+# screen like setting（tmux 設定の移植）
+# ----------
+new_tab = ["prefix+c", "prefix+ctrl+c"]
+detach = ["prefix+d", "prefix+ctrl+d"]
+next_tab = ["prefix+n", "prefix+ctrl+n", "prefix+space"]
+previous_tab = ["prefix+ctrl+p", "prefix+ctrl+h"]
+rename_tab = "prefix+shift+a"
+# tmux の ^A last-window 相当（herdr に last_tab はないため pane 単位の往復で代用）
+last_pane = "prefix+ctrl+a"
+
+# ----------
+# vim like setting（tmux 設定の移植）
+# ----------
+# tmux の bind s / bind v に合わせる（デフォルトの settings = prefix+s は S へ退避）
+split_vertical = "prefix+v"
+split_horizontal = "prefix+s"
+settings = "prefix+shift+s"
+# コピーモード（herdr は元々 vi 風: v で選択開始 / y でコピー）
+# 注: prefix 中の Esc は「prefix モード取り消し」に予約されており bind 不可（tmux の bind Escape copy-mode は再現できない）
+copy_mode = "prefix+["
+# pane 移動 hjkl は herdr デフォルトが tmux 設定と同一のため指定不要
+# リサイズは resize_mode（prefix+r）内で hjkl
+
+[ui]
+# tmux 同様、タブ作成時に名前を聞かない（^K A で後からリネーム）
+# タブの組み込み自動命名は herdr 0.7.1 には無い（自動命名されるのはワークスペースのみ）
+prompt_new_tab_name = false
+# ペイン境界に検出したエージェント名（claude 等）を表示
+show_agent_labels_on_pane_borders = true
+
+[ui.toast]
+# エージェント通知を外側ターミナル（Ghostty）のデスクトップ通知として出す
+# （tmux の allow-passthrough による OSC 通知転送に相当）
+delivery = "terminal"
+
+[experimental]
+# prefix モード中の ASCII 入力ソース一時切替は使わない。
+# TISSelectInputSource による切替が macOS の「直前の入力ソース」履歴を上書きし、
+# 入力ソースのトグル（1回で直前のソースへ戻る）を壊すため（2026-07-03 に実害確認）。
+# 代わりに tmux 時代と同様、IME オンのまま prefix が効かない場合は手動で英数に切り替える。
+switch_ascii_input_source_in_prefix = false
