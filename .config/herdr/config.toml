@@ -36,6 +36,10 @@ copy_mode = "prefix+["
 # pane 移動 hjkl は herdr デフォルトが tmux 設定と同一のため指定不要
 # リサイズは resize_mode（prefix+r）内で hjkl
 
+# ワークスペース移動を vim like に(デフォルトは up/down)
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+
 [ui]
 # tmux 同様、タブ作成時に名前を聞かない（^K A で後からリネーム）
 # タブの組み込み自動命名は herdr 0.7.1 には無い（自動命名されるのはワークスペースのみ）
