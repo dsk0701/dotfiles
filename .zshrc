@@ -13,6 +13,10 @@ bindkey '^N' history-beginning-search-forward-end
 bindkey '^[[A' history-beginning-search-backward-end # ↑キー
 bindkey '^[[B' history-beginning-search-forward-end  # ↓キー
 
+# Ghostty が Ctrl+Enter を modifyOtherKeys 形式(ESC[27;5;13~)で送るため、
+# 未バインドだと `;5;13~` が誤入力される。Enterと同じ扱いにする。
+bindkey '^[[27;5;13~' accept-line
+
 # --------------------------------------------------------------------------------
 # 補完設定
 # --------------------------------------------------------------------------------
