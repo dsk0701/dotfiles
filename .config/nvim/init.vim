@@ -427,13 +427,6 @@ let g:previm_open_cmd = 'open -a Google\ Chrome'
 
 " mac.
 if has('mac')
-    " 透過させる.
-    aug transmission
-        au!
-        au FocusGained * set transparency=5
-        au FocusLost * set transparency=30
-    aug END
-
     " 勝手に改行しない.
     set formatoptions=q
 
