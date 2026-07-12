@@ -2,6 +2,7 @@
 *.un~
 tags
 .netrwhist
+.nvimlog
 .vim/dein
 
 # mac
