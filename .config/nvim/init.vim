@@ -12,6 +12,9 @@ set termguicolors
 set background=dark
 colorscheme gruvbox
 
+" herdr の PREFIX ヒントバーが最下行を覆うため、コマンド入力行を下から2行目に逃がす.
+set cmdheight=2
+
 " --------------------------------------------------
 " 既に開いているウィンドウ/タブがあればそこへ切り替えてバッファを開く.
 " ddu の open アクションの command パラメータとして利用する.
