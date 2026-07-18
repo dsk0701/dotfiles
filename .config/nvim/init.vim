@@ -10,7 +10,25 @@ lua require('init')
 " テーマ.
 set termguicolors
 set background=dark
-colorscheme gruvbox
+" gruvbox-material: コントラストは hard/medium/soft、foreground は material/mix/original.
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_foreground = 'mix'
+let g:gruvbox_material_better_performance = 1
+" everforest: コントラストは hard/medium/soft.
+let g:everforest_background = 'medium'
+let g:everforest_better_performance = 1
+colorscheme everforest
+
+" gruvbox-material ⇄ everforest を lightline ごと切り替える（試用比較のため）.
+function! s:SwitchColorscheme(name) abort
+  execute 'colorscheme' a:name
+  let g:lightline.colorscheme = substitute(a:name, '-', '_', 'g')
+  call lightline#init()
+  call lightline#colorscheme()
+  call lightline#update()
+endfunction
+command! ToggleTheme call s:SwitchColorscheme(
+      \ g:colors_name ==# 'everforest' ? 'gruvbox-material' : 'everforest')
 
 " herdr の PREFIX ヒントバーが最下行を覆うため、コマンド入力行を下から2行目に逃がす.
 set cmdheight=2
@@ -382,7 +400,7 @@ let g:EmacsCommandLineSearchCommandLineMap = '<M-r>'
 " lightline
 " --------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'everforest',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
       \ },
