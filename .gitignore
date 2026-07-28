@@ -59,9 +59,6 @@ xcuserdata
 .config/herdr/*
 !.config/herdr/config.toml
 
-docs/
-
-
 **/.claude/settings.local.json
 
 **/.claude/.cc-writes/
