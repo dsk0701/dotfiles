@@ -1,0 +1,30 @@
+{
+  "port": 0,
+  "host": "127.0.0.1",
+  "public_url": "",
+  "no_open": false,
+  "open_cmd": "",
+  "share_url": "",
+  "proxy_auth": false,
+  "quiet": false,
+  "output": "",
+  "author": "",
+  "base_branch": "",
+  "ignore_patterns": [
+    "*.lock",
+    "*.min.js",
+    "*.min.css",
+    ".crit/"
+  ],
+  "auto_viewed_patterns": [],
+  "no_integration_check": false,
+  "no_update_check": false,
+  "disable_stats": false,
+  "agent_cmd": "",
+  "plan_approve_mode": "",
+  "cleanup_on_approve": true,
+  "notify_on_round_ready": false,
+  "vcs": "",
+  "prompts": {},
+  "hooks": {}
+}
