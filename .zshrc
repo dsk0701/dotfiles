@@ -220,6 +220,8 @@ case "${OSTYPE}" in
 
         # HomeBrew 設定
         eval $(/opt/homebrew/bin/brew shellenv)
+        # keg-only の curl を macOS 標準より優先する
+        export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 
         ;;
 esac
