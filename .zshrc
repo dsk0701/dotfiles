@@ -266,5 +266,20 @@ function xbs-setup() {
   fi
 }
 
+# カレントディレクトリ直下の .xcworkspace / .xcodeproj に対応する DerivedData を削除
+rmdd() {
+  local d ws found=0
+  for d in ~/Library/Developer/Xcode/DerivedData/*/(N); do
+    [[ -f "$d/info.plist" ]] || continue
+    ws="$(/usr/libexec/PlistBuddy -c 'Print WorkspacePath' "$d/info.plist" 2>/dev/null)"
+    if [[ -n "$ws" && "${ws:h}" == "$PWD" ]]; then
+      echo "rm $d ($ws:t)"
+      rm -rf "$d"
+      found=1
+    fi
+  done
+  (( found )) || echo "DerivedData が見つかりません: $PWD"
+}
+
 # local設定の読み込み
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
